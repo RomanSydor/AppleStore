@@ -16,6 +16,7 @@ namespace AppleStore.Installers
 
             services.AddScoped<IIPhoneRepository, IPhoneRepository>();
             services.AddScoped<IMacRepository, MacRepository>();
+            services.AddScoped<IIPadRepository, IPadRepository>();
         }
     }
 }

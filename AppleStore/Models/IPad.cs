@@ -7,10 +7,15 @@ namespace AppleStore.Models
         [Key]
         public int Id { get; set; }
         public string IPadModel { get; set; }
-        public string Type { get; set; }
+        public string TypeOfModel { get; set; }
         public int Memory { get; set; }
-        public bool IsCellular { get; set; }
+        public string Type { get; set; } // Wi-Fi, LTE
+        public string ScreenType { get; set; }
         public float ScreenSize { get; set; }
+        public string Processor { get; set; }
+        public int Ram { get; set; }
+        public string MainCamera { get; set; }
+        public int FrontCamera { get; set; }
         public int YearOfProduction { get; set; }
         public string Color { get; set; }
         public float Price { get; set; }
