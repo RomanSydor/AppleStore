@@ -8,9 +8,11 @@ namespace AppleStore.Models
         public int Id { get; set; }
         public string IPhoneModel { get; set; }
         public int Memory { get; set; }
+        public int Weight { get; set; }
         public string ScreenType { get; set; }
         public float ScreenSize { get; set; }
         public string UhdRecording { get; set; }
+        public int BatteryCapacity { get; set; }
         public string Processor { get; set; }
         public int Ram { get; set; }
         public string MainCamera { get; set; }
