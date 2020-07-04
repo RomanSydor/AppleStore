@@ -18,6 +18,7 @@ namespace AppleStore.Installers
             services.AddScoped<IMacRepository, MacRepository>();
             services.AddScoped<IIPadRepository, IPadRepository>();
             services.AddScoped<IAppleWatchRepository, AppleWatchRepository>();
+            services.AddScoped<IAirPodsRepository, AirPodsRepository>();
         }
     }
 }
