@@ -1,6 +1,7 @@
 ﻿using AppleStore.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AppleStore.Repositories
@@ -17,6 +18,16 @@ namespace AppleStore.Repositories
         public async Task<List<IPhone>> GetIPhonesAsync()
         {
             return await _dataContext.IPhones.ToListAsync();
+        }
+
+        public async Task<IEnumerable<IPhone>> GetIPhoneByModelAsync(string model)
+        {
+            var iPhones =  _dataContext.IPhones
+                .Where(i => i.IPhoneModel == model);
+
+            return await iPhones
+                .OrderBy(m => m.Memory)
+                .ToListAsync();
         }
 
         public async Task<IPhone> GetIPhoneByIdAsync(int id)

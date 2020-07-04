@@ -8,90 +8,36 @@
 <h2>Index</h2>
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IPhoneModel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Memory)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ScreenType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ScreenSize)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UhdRecording)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Processor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ram)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MainCamera)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FrontCamera)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
     <tbody>
-@foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.IPhoneModel)
+                <a href="/IPhone/Models/iPhone 11 Pro Max">
+                    <img src="#" alt="iPhone11-pro-max-img" />
+                </a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Memory)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ScreenType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ScreenSize)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UhdRecording)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Processor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ram)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MainCamera)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FrontCamera)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                iPhone 11 Pro Max
             </td>
         </tr>
-}
+        <tr>
+            <td>
+                <a href="/IPhone/Models/iPhone 11 Pro">
+                    <img src="#" alt="iPhone11-pro-img" />
+                </a>
+            </td>
+            <td>
+                iPhone 11 Pro
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/IPhone/Models/iPhone 11">
+                    <img src="#" alt="iPhone11-img" />
+                </a>
+            </td>
+            <td>
+                iPhone 11
+            </td>
+        </tr>
     </tbody>
 </table>

@@ -20,6 +20,14 @@ namespace AppleStore.Controllers.V1
         }
 
         [HttpGet]
+        [Route("/IPhone/Models/{model}")]
+        public async Task<IActionResult> Models([FromRoute]string model) 
+        {
+            var iPhones = await _iPhoneRepository.GetIPhoneByModelAsync(model);
+            return View(iPhones);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Details([FromRoute]int id)
         {
             var iPhone = await _iPhoneRepository.GetIPhoneByIdAsync(id);
