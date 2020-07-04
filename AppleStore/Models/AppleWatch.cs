@@ -8,7 +8,8 @@ namespace AppleStore.Models
         public int Id { get; set; }
         public string AppleWatchModel { get; set; }
         public int ScreenSize { get; set; }
-        public string Communication { get; set; }
+        public string Cellular { get; set; }
+        public string Gps { get; set; }
         public string Color { get; set; }
         public string HousingMaterial { get; set; }
         public string StrapType { get; set; }
