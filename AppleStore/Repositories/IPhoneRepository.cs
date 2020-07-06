@@ -27,6 +27,7 @@ namespace AppleStore.Repositories
 
             return await iPhones
                 .OrderBy(m => m.Memory)
+                .OrderBy(p => p.Price)
                 .ToListAsync();
         }
 

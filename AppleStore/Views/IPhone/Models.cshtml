@@ -13,6 +13,8 @@
     <thead>
         <tr>
             <th>
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.IPhoneModel)
             </th>
             <th>
@@ -24,9 +26,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -34,19 +33,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                <img src="#" alt="@item.IPhoneModel-@item.Memory-@item.Color-img" />
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.IPhoneModel)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Memory)
+                @Html.DisplayFor(modelItem => item.Memory) Gb
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Color)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                $ @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
