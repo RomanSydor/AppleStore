@@ -21,6 +21,14 @@ namespace AppleStore.Controllers.V1
         }
 
         [HttpGet]
+        [Route("/Mac/Models/{type}")]
+        public async Task<IActionResult> Models([FromRoute]string type)
+        {
+            var macs = await _macRepository.GetMacByModelAsync(type);
+            return View(macs);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Details(int id) 
         {
             var mac = await _macRepository.GetMacByIdAsync(id);

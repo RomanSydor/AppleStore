@@ -8,96 +8,36 @@
 <h2>Index</h2>
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.MacModel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Memory)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ScreenSize)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Processor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ram)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SsdCapacity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DriveCapacity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VideoCard)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.YearOfProduction)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
     <tbody>
-@foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.MacModel)
+                <a href="/Mac/Models/MacBook Pro">
+                    <img src="#" alt="MacBook-Pro-img" />
+                </a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Memory)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ScreenSize)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Processor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ram)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SsdCapacity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DriveCapacity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VideoCard)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YearOfProduction)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                Apple MacBook Pro
             </td>
         </tr>
-}
+        <tr>
+            <td>
+                <a href="/Mac/Models/MacBook Air">
+                    <img src="#" alt="MacBook-Air-img" />
+                </a>
+            </td>
+            <td>
+                Apple MacBook Air
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/Mac/Models/iMac">
+                    <img src="#" alt="iMac-img" />
+                </a>
+            </td>
+            <td>
+                Apple iMac
+            </td>
+        </tr>
     </tbody>
 </table>

@@ -8,5 +8,6 @@ namespace AppleStore.Repositories
     {
         Task<List<Mac>> GetMacsAsync();
         Task<Mac> GetMacByIdAsync(int id);
+        Task<IEnumerable<Mac>> GetMacByModelAsync(string type);
     }
 }
