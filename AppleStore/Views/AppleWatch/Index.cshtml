@@ -9,72 +9,26 @@
 
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AppleWatchModel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ScreenSize)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cellular)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gps)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HousingMaterial)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StrapType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
     <tbody>
-@foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.AppleWatchModel)
+                <a href="/AppleWatch/Models/Apple Watch Series 5">
+                    <img src="#" alt="Apple-Watch-Series-5-img" />
+                </a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ScreenSize)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cellular)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gps)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HousingMaterial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StrapType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                Apple Watch Series 5
             </td>
         </tr>
-}
+        <tr>
+            <td>
+                <a href="/AppleWatch/Models/Apple Watch Series 3">
+                    <img src="#" alt="Apple-Watch-Series-3-img" />
+                </a>
+            </td>
+            <td>
+                Apple Watch Series 3
+            </td>
+        </tr>
     </tbody>
 </table>

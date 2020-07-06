@@ -1,6 +1,7 @@
 ﻿using AppleStore.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AppleStore.Repositories
@@ -17,6 +18,17 @@ namespace AppleStore.Repositories
         public async Task<AppleWatch> GetAppleWatchByIdAsync(int id)
         {
             return await _dataContext.AppleWatches.SingleOrDefaultAsync(w => w.Id == id);
+        }
+
+        public async Task<IEnumerable<AppleWatch>> GetAppleWatchByModelAsync(string model)
+        {
+            var watches = _dataContext.AppleWatches
+                .Where(m => m.AppleWatchModel == model);
+
+            return await watches
+                .OrderBy(ss => ss.ScreenSize)
+                .OrderBy(p => p.Price)
+                .ToListAsync();
         }
 
         public async Task<List<AppleWatch>> GetAppleWatchesAsync()

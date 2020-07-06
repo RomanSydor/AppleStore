@@ -24,6 +24,14 @@ namespace AppleStore.Controllers.V1
         }
 
         [HttpGet]
+        [Route("/AppleWatch/Models/{model}")]
+        public async Task<IActionResult> Models([FromRoute]string model)
+        {
+            var watches = await _appleWatchRepository.GetAppleWatchByModelAsync(model);
+            return View(watches);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Details(int id) 
         {
             var watch = await _appleWatchRepository.GetAppleWatchByIdAsync(id);
