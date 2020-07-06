@@ -8,7 +8,7 @@ namespace AppleStore.Models
         public int Id { get; set; }
         public string IPadModel { get; set; }
         public string TypeOfModel { get; set; }
-        public int Memory { get; set; }
+        public string Memory { get; set; }
         public string Type { get; set; } // Wi-Fi, LTE
         public string ScreenType { get; set; }
         public float ScreenSize { get; set; }

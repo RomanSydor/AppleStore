@@ -8,11 +8,12 @@ namespace AppleStore.Models
         public int Id { get; set; }
         public string MacModel { get; set; }
         public string Type { get; set; }
-        public int Memory { get; set; }
+        public string Memory { get; set; }
         public float ScreenSize { get; set; }
         public string Processor { get; set; }
+        public int KernelsAmount { get; set; }
         public int Ram { get; set; }
-        public int? SsdCapacity { get; set; }
+        public string SsdCapacity { get; set; }
         public string DriveCapacity { get; set; }
         public string VideoCard { get; set; }
         public int YearOfProduction { get; set; }

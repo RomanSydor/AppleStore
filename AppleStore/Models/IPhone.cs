@@ -7,7 +7,7 @@ namespace AppleStore.Models
         [Key]
         public int Id { get; set; }
         public string IPhoneModel { get; set; }
-        public int Memory { get; set; }
+        public string Memory { get; set; }
         public int Weight { get; set; }
         public string ScreenType { get; set; }
         public float ScreenSize { get; set; }
