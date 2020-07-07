@@ -14,9 +14,17 @@ namespace AppleStore.Controllers.V1
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index() 
+        public async Task<IActionResult> Index()
         {
             var iPads = await _iPadRepository.GetIPadsAsync();
+            return View(iPads);
+        }
+
+        [HttpGet]
+        [Route("/IPad/Models/{type}")]
+        public async Task<IActionResult> Models([FromRoute]string type) 
+        {
+            var iPads = await _iPadRepository.GetIPadByModelAsync(type);
             return View(iPads);
         }
 
