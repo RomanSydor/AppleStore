@@ -1,90 +1,118 @@
 ﻿@model AppleStore.Models.IPhone
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = $"{Model.IPhoneModel}";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+@*<h2 style="text-align: center;">Details</h2>*@
 
-<div>
-    <h4>IPhone</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IPhoneModel)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IPhoneModel)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Memory)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Memory)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ScreenType)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ScreenType)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ScreenSize)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ScreenSize)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.UhdRecording)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UhdRecording)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Processor)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Processor)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Ram)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Ram)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.MainCamera)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MainCamera)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FrontCamera)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FrontCamera)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a href="/IPhone/Models/@Model.IPhoneModel">Back to List</a>
+<br>
+<h4>
+    <a href="/IPhone/Models/@Model.IPhoneModel"> << @Model.IPhoneModel</a>
+</h4>
+
+<div style="display: flex;">
+    <img style="margin-bottom: 70px;" src="~/images/@Model.IPhoneModel-@Model.Color-details .webp" alt="@Model.IPhoneModel-@Model.Color-img" />
+    <div style="padding-top: 50px;">
+        <dl class="dl-horizontal">
+            <dt>
+                Model:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IPhoneModel)
+            </dd>
+            <br />
+            <dt>
+                Memory:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Memory) 
+            </dd>
+            <br />
+            <dt>
+                Battery capacity:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.BatteryCapacity) mAh
+            </dd>
+            <br />
+            <dt>
+                Weight:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Weight) g
+            </dd>
+            <br />
+            <dt>
+                Screen type:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ScreenType)
+            </dd>
+            <br />
+            <dt>
+                Screen size:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ScreenSize)"
+            </dd>
+            <br />
+            <dt>
+                4K recording:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UhdRecording)
+            </dd>
+            <br />
+            <dt>
+                Processor:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Processor)
+            </dd>
+            <br />
+            <dt>
+                Ram:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Ram) Gb
+            </dd>
+            <br />
+            <dt>
+                Main camera:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MainCamera) MP
+            </dd>
+            <br />
+            <dt>
+                Front camera:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FrontCamera) MP
+            </dd>
+            <br />
+            <dt>
+                Color:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Color)
+            </dd>
+            <br />
+            <dt>
+                Price:
+            </dt>
+            <dd>
+                $ @Html.DisplayFor(model => model.Price)
+            </dd>
+            <br />
+            <dt>
+                Description:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        </dl>
+    </div>
 </div>

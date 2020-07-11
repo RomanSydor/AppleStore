@@ -4,53 +4,36 @@
     ViewData["Title"] = "Models";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Models</h2>
-
-<a href="/IPhone/Index">Back</a>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IPhoneModel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Memory)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <img src="#" alt="@item.IPhoneModel-@item.Memory-@item.Color-img" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IPhoneModel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Memory)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                $ @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
-            </td>
-        </tr>
-}
-    </tbody>
+@*<h2 style="text-align:center;"></h2>
+<hr />*@
+<br>
+<h4>
+    <a href="/IPhone/Index"><< iPhones</a>
+</h4>
+<table>
+    <tr>
+        <td>
+            @foreach (var item in Model)
+            {
+                <nav>
+                    <a href="/IPhone/Details/@item.Id" style="text-align: center;">
+                        <img src="~/images/@item.IPhoneModel-@item.Color .webp" alt="@item.IPhoneModel-@item.Color-img" />
+                        <br>
+                        <br>
+                        <h4>
+                            <span>@item.IPhoneModel</span>
+                            <br>
+                            <span>@item.Memory</span>
+                            <br>
+                            <span>@item.Color</span>
+                            <br>
+                            <br>
+                            <span>$ @item.Price</span>
+                            <br>
+                        </h4>
+                    </a>
+                </nav>
+            }
+        </td>
+    </tr>
 </table>
