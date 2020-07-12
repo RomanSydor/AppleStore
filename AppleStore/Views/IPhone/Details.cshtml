@@ -3,17 +3,93 @@
 @{
     ViewData["Title"] = $"{Model.IPhoneModel}";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string currentMemory;
+    string currentModel;
+    string currentColor;
+    currentModel = Model.IPhoneModel;
+    currentMemory = Model.Memory;
+    currentColor = Model.Color;
 }
-
-@*<h2 style="text-align: center;">Details</h2>*@
 
 <br>
 <h4>
     <a href="/IPhone/Models/@Model.IPhoneModel"> << @Model.IPhoneModel</a>
 </h4>
 
-<div style="display: flex;">
-    <img style="margin-bottom: 70px;" src="~/images/@Model.IPhoneModel-@Model.Color-details .webp" alt="@Model.IPhoneModel-@Model.Color-img" />
+<div style="display: flex; justify-content: space-between;">
+    <img style="margin-bottom: 100px;" src="~/images/@Model.IPhoneModel-@Model.Color-details .webp" alt="@Model.IPhoneModel-@Model.Color-img" />
+    <div>
+        @if (Model.IPhoneModel == "Apple iPhone 11 Pro Max" || Model.IPhoneModel == "Apple iPhone 11 Pro")
+        {
+            <br><br><br><br><br>
+            <h5>Color:</h5>
+            <nav>
+                <a href="/IPhone/Details/@currentModel/Space Gray/@currentMemory">
+                    Space Gray
+                </a>
+                <a href="/IPhone/Details/@currentModel/Silver/@currentMemory">
+                    Silver
+                </a>
+                <a href="/IPhone/Details/@currentModel/Midnight Green/@currentMemory">
+                    Midnight Green
+                </a>
+                <a href="/IPhone/Details/@currentModel/Gold/@currentMemory">
+                    Gold
+                </a>
+            </nav>
+            <h5>Memory:</h5>
+            <nav>
+                <a href="/IPhone/Details/@currentModel/@currentColor/64 Gb">
+                    64 Gb
+                </a>
+                <a href="/IPhone/Details/@currentModel/@currentColor/256 Gb">
+                    256 Gb
+                </a>
+                <a href="/IPhone/Details/@currentModel/@currentColor/512 Gb">
+                    512 Gb
+                </a>
+            </nav>
+        }
+
+        else if (Model.IPhoneModel == "Apple iPhone 11")
+        {
+            <br><br><br><br><br>
+            <h5>Color:</h5>
+            <nav>
+                <a href="/IPhone/Details/@currentModel/Black/@currentMemory">
+                    Black
+                </a>
+                <a href="/IPhone/Details/@currentModel/White/@currentMemory">
+                    White
+                </a>
+                <a href="/IPhone/Details/@currentModel/Red/@currentMemory">
+                    Red
+                </a>
+                <a href="/IPhone/Details/@currentModel/Green/@currentMemory">
+                    Green
+                </a>
+                <a href="/IPhone/Details/@currentModel/Yellow/@currentMemory">
+                    Yellow
+                </a>
+                <a href="/IPhone/Details/@currentModel/Purple/@currentMemory">
+                    Purple
+                </a>
+            </nav>
+            <h5>Memory:</h5>
+            <nav>
+                <a href="/IPhone/Details/@currentModel/@currentColor/64 Gb">
+                    64 Gb
+                </a>
+                <a href="/IPhone/Details/@currentModel/@currentColor/128 Gb">
+                    128 Gb
+                </a>
+                <a href="/IPhone/Details/@currentModel/@currentColor/256 Gb">
+                    256 Gb
+                </a>
+            </nav>
+        }
+    </div>
+
     <div style="padding-top: 50px;">
         <dl class="dl-horizontal">
             <dt>
@@ -27,7 +103,14 @@
                 Memory:
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Memory) 
+                @Html.DisplayFor(model => model.Memory)
+            </dd>
+            <br />
+            <dt>
+                Color:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Color)
             </dd>
             <br />
             <dt>
@@ -91,13 +174,6 @@
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.FrontCamera) MP
-            </dd>
-            <br />
-            <dt>
-                Color:
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Color)
             </dd>
             <br />
             <dt>

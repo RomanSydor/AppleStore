@@ -35,5 +35,11 @@ namespace AppleStore.Repositories
         {
             return await _dataContext.IPhones.SingleOrDefaultAsync(d => d.Id == id);
         }
+
+        public IPhone GetIPhoneByColorAndMemoryAsync(string color, string memory, string model)
+        {
+            return _dataContext.IPhones
+                .SingleOrDefault(i => i.Color == color && i.Memory == memory && i.IPhoneModel == model);
+        }
     }
 }

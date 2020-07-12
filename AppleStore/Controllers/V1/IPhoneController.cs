@@ -28,6 +28,7 @@ namespace AppleStore.Controllers.V1
         }
 
         [HttpGet]
+        [Route("/IPhone/Details/{id}")]
         public async Task<IActionResult> Details([FromRoute]int id)
         {
             var iPhone = await _iPhoneRepository.GetIPhoneByIdAsync(id);
@@ -40,5 +41,18 @@ namespace AppleStore.Controllers.V1
             return View(iPhone);
         }
 
+        [HttpGet]
+        [Route("/IPhone/Details/{model}/{color}/{memory}")]
+        public IActionResult Details([FromRoute]string color, [FromRoute]string memory, [FromRoute]string model)
+        {
+            var iPhone = _iPhoneRepository.GetIPhoneByColorAndMemoryAsync(color, memory, model);
+
+            if (iPhone == null)
+            {
+                return NotFound();
+            }
+
+            return View(iPhone);
+        }
     }
 }
