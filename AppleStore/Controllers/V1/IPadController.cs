@@ -38,5 +38,23 @@ namespace AppleStore.Controllers.V1
             }
             return View(iPad);
         }
+
+        [HttpGet]
+        [Route("/IPad/Details/{model}/{type}/{color}/{memory}")]
+        public IActionResult Details([FromRoute]string color, [FromRoute]string memory, [FromRoute]string model, [FromRoute]string type)
+        {
+            if (type == "Wi-Fi-pl-LTE") 
+            {
+                type = "Wi-Fi+LTE";
+            }
+            var iPad = _iPadRepository.GetIPadByColorAndMemory(color, memory, model, type);
+
+            if (iPad == null)
+            {
+                return NotFound();
+            }
+
+            return View(iPad);
+        }
     }
 }

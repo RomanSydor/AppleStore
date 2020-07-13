@@ -5,50 +5,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Models</h2>
-
-<a href="/IPad/Index">Back</a>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IPadModel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Memory)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IPadModel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Memory)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+@*<h2>Models</h2>*@
+<br />
+<h4>
+    <a href="/IPad/Index"><< iPads</a>
+</h4>
+<table>
+    <tr>
+        <td>
+            @foreach (var item in Model)
+            {
+            <nav>
+                <br>
+                <a href="/IPad/Details/@item.Id" style="text-align: center;">
+                    <img src="~/images/@item.TypeOfModel-@item.Color .webp" alt="@item.TypeOfModel-@item.Color-img" />
+                    <br>
+                    <h4>
+                        <span>@item.IPadModel</span>
+                        <br>
+                        <span>@item.Type</span>
+                        <br>
+                        <span>@item.Memory</span>
+                        <br>
+                        <span>@item.Color</span>
+                        <br>
+                        <br>
+                        <span style="font-size:25px;">$ @item.Price</span>
+                        <br>
+                    </h4>
+                </a>
+                <br>
+            </nav>
+                }
             </td>
         </tr>
-}
-    </tbody>
-</table>
+    </table>

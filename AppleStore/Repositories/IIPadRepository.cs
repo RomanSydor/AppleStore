@@ -9,5 +9,6 @@ namespace AppleStore.Repositories
         Task<List<IPad>> GetIPadsAsync();
         Task<IPad> GetIPadByIdAsync(int id);
         Task<IEnumerable<IPad>> GetIPadByModelAsync(string type);
+        IPad GetIPadByColorAndMemory(string color, string memory, string model, string type);
     }
 }

@@ -3,100 +3,203 @@
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string currentMemory;
+    string currentModel;
+    string currentColor;
+    string currentType;
+    currentModel = Model.TypeOfModel;
+    currentType = Model.Type;
+    @if (currentType == "Wi-Fi+LTE")
+    {
+        currentType = "Wi-Fi-pl-LTE";
+    }
+    currentMemory = Model.Memory;
+    currentColor = Model.Color;
 }
+<br>
+<h4>
+    <a href="/IPad/Models/@Model.TypeOfModel"> << @Model.IPadModel</a>
+</h4>
 
-<h2>Details</h2>
+<div style="display: flex; justify-content: space-between;">
+    @if (Model.TypeOfModel == "iPad Air" || (Model.TypeOfModel == "iPad Mini 5" && Model.Color != "Gold"))
+    {
+        <img style="height: 480px; width: 480px;" src="~/images/@Model.TypeOfModel-@Model.Color-details .webp" alt="@Model.TypeOfModel-@Model.Color-img" />
+    }
+    else if (Model.TypeOfModel == "iPad Mini 5" && Model.Color == "Gold")
+    {
+        <img style="height: 480px; width: 400px;" src="~/images/@Model.TypeOfModel-@Model.Color-details .webp" alt="@Model.TypeOfModel-@Model.Color-img" />
+    }
+    else
+    {
+        <img src="~/images/@Model.TypeOfModel-@Model.Color-details .webp" alt="@Model.TypeOfModel-@Model.Color-img" />
+    }
+    <div>
+        @if (Model.TypeOfModel == "iPad Pro 12.9" || Model.TypeOfModel == "iPad Pro 11")
+        {
+            <br><br><br><br><br>
+            <h5>Color:</h5>
+            <nav>
+                <a href="/IPad/Details/@currentModel/@currentType/Space Gray/@currentMemory">
+                    Space Gray
+                </a>
+                <a href="/IPad/Details/@currentModel/@currentType/Silver/@currentMemory">
+                    Silver
+                </a>
+            </nav>
+            <h5>Memory:</h5>
+            <nav>
+                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/128 Gb">
+                    128 Gb
+                </a>
+                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/256 Gb">
+                    256 Gb
+                </a>
+                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/512 Gb">
+                    512 Gb
+                </a>
+                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/1 Tb">
+                    1 Tb
+                </a>
+            </nav>
+        }
+        else if (Model.TypeOfModel == "iPad 10.2" || Model.TypeOfModel == "iPad Air" || Model.TypeOfModel == "iPad Mini 5")
+        {
+            <br><br><br><br><br>
+            <h5>Color:</h5>
+            <nav>
+                <a href="/IPad/Details/@currentModel/@currentType/Space Gray/@currentMemory">
+                    Space Gray
+                </a>
+                <a href="/IPad/Details/@currentModel/@currentType/Silver/@currentMemory">
+                    Silver
+                </a>
+                <a href="/IPad/Details/@currentModel/@currentType/Gold/@currentMemory">
+                    Gold
+                </a>
+            </nav>
+            <h5>Memory:</h5>
+            @if (Model.TypeOfModel == "iPad 10.2")
+            {
+                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/32 Gb">
+                    32 Gb
+                </a>
+                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/128 Gb">
+                    128 Gb
+                </a>
+            }
+            @if (Model.TypeOfModel == "iPad Air" || Model.TypeOfModel == "iPad Mini 5")
+            {
+                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/64 Gb">
+                    64 Gb
+                </a>
+                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/256 Gb">
+                    256 Gb
+                </a>
+            }
+        }
+        <h5>Type:</h5>
+        <nav>
+            <a href="/IPad/Details/@currentModel/Wi-Fi/@currentColor/@currentMemory">
+                Wi-Fi
+            </a>
+            <a href="/IPad/Details/@currentModel/Wi-Fi-pl-LTE/@currentColor/@currentMemory">
+                Wi-Fi+LTE
+            </a>
+        </nav>
+        <br>
+        <br>
+        <h1>
+            $ @Model.Price
+        </h1>
+    </div>
 
-<div>
-    <h4>IPad</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IPadModel)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IPadModel)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TypeOfModel)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TypeOfModel)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Memory)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Memory)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Type)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ScreenType)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ScreenType)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ScreenSize)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ScreenSize)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Processor)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Processor)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Ram)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Ram)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.MainCamera)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MainCamera)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.FrontCamera)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.FrontCamera)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.YearOfProduction)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.YearOfProduction)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a href="/IPad/Models/@Model.TypeOfModel">Back to List</a>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Model:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IPadModel)
+            </dd>
+            <br>
+            <dt>
+                Memory:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Memory)
+            </dd>
+            <br>
+            <dt>
+                Color:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Color)
+            </dd>
+            <br>
+            <dt>
+                Type:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Type)
+            </dd>
+            <br>
+            <dt>
+                Screen type:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ScreenType)
+            </dd>
+            <br>
+            <dt>
+                Screen size:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ScreenSize)"
+            </dd>
+            <br>
+            <dt>
+                Processor:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Processor)
+            </dd>
+            <br>
+            <dt>
+                Ram:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Ram) Gb
+            </dd>
+            <br>
+            <dt>
+                Main camera:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MainCamera) MP
+            </dd>
+            <br>
+            <dt>
+                Front camera:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.FrontCamera) MP
+            </dd>
+            <br>
+            <dt>
+                Year of production:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.YearOfProduction)
+            </dd>
+            <br>
+            <dt>
+                Description:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        </dl>
+    </div>
 </div>

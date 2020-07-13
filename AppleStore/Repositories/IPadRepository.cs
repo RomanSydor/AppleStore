@@ -35,5 +35,12 @@ namespace AppleStore.Repositories
         {
             return await _dataContext.IPads.ToListAsync();
         }
+
+        public IPad GetIPadByColorAndMemory(string color, string memory, string model, string type)
+        {
+            return _dataContext.IPads
+                .SingleOrDefault(i => i.Color == color && i.Memory == memory 
+                && i.TypeOfModel == model && i.Type == type);
+        }
     }
 }
