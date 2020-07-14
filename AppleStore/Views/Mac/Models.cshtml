@@ -5,53 +5,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Models</h2>
+@*<h2>Models</h2>*@
 
-<a href="/Mac/Index">Back</a>
+<br />
+<h4>
+    <a href="/Mac/Index"><< Macs</a>
+</h4>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.MacModel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Memory)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.YearOfProduction)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MacModel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Memory)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YearOfProduction)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
-            </td>
-        </tr>
-}
-    </tbody>
+<table>
+    <tr>
+        <td>
+            @foreach (var item in Model)
+            {
+                <nav>
+                    <br>
+                    <a href="/Mac/Details/@item.Id" style="text-align: center;">
+                        <img src="~/images/@item.MacModel-@item.Color-@item.ScreenSize .webp" 
+                             alt="@item.MacModel-@item.Color-@item.ScreenSize-img" />
+                        <br>
+                        <h4>
+                            <span>@item.MacModel</span>
+                            <br>
+                            <span>@item.YearOfProduction</span>
+                            <br>
+                            <span>@item.Memory</span>
+                            <br>
+                            <span>@item.Color</span>
+                            <br>
+                            <br>
+                            <span style="font-size:25px;">$ @item.Price</span>
+                            <br>
+                        </h4>
+                    </a>
+                    <br>
+                </nav>
+            }
+        </td>
+    </tr>
 </table>
