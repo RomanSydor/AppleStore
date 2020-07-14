@@ -3,12 +3,9 @@
 @{
     ViewData["Title"] = $"{Model.IPhoneModel}";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    string currentMemory;
-    string currentModel;
-    string currentColor;
-    currentModel = Model.IPhoneModel;
-    currentMemory = Model.Memory;
-    currentColor = Model.Color;
+    string currentMemory = Model.IPhoneModel;
+    string currentModel = Model.Memory;
+    string currentColor = Model.Color;
 }
 
 <br>
@@ -88,6 +85,11 @@
                 </a>
             </nav>
         }
+        <br>
+        <br>
+        <h1>
+            $ @Model.Price
+        </h1>
     </div>
 
     <div style="padding-top: 50px;">
@@ -174,13 +176,6 @@
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.FrontCamera) MP
-            </dd>
-            <br />
-            <dt>
-                Price:
-            </dt>
-            <dd>
-                $ @Html.DisplayFor(model => model.Price)
             </dd>
             <br />
             <dt>
