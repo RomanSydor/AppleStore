@@ -3,18 +3,15 @@
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    string currentMemory;
-    string currentModel;
-    string currentColor;
-    string currentType;
-    currentModel = Model.TypeOfModel;
-    currentType = Model.Type;
+    string currentMemory = Model.Memory;
+    string currentModel = Model.TypeOfModel;
+    string currentColor = Model.Color;
+    string currentType = Model.Type;
+
     @if (currentType == "Wi-Fi+LTE")
     {
         currentType = "Wi-Fi-pl-LTE";
     }
-    currentMemory = Model.Memory;
-    currentColor = Model.Color;
 }
 <br>
 <h4>
