@@ -35,5 +35,12 @@ namespace AppleStore.Repositories
         {
             return await _dataContext.AppleWatches.ToListAsync();
         }
+
+        public AppleWatch GetWatchByColorAndSize(int size, string color, string model, string celluar)
+        {
+            return _dataContext.AppleWatches
+                .SingleOrDefault(w => w.ScreenSize == size && w.Color == color &&
+                w.AppleWatchModel == model && w.Cellular == celluar);
+        }
     }
 }

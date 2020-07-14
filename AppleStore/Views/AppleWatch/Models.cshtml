@@ -5,76 +5,64 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Models</h2>
+@*<h2>Models</h2>*@
 
-<a href="/AppleWatch/Index">Back</a>
+<br>
+<h4>
+    <a href="/AppleWatch/Index"><< Apple Watches</a>
+</h4>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AppleWatchModel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ScreenSize)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cellular)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gps)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HousingMaterial)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StrapType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <img src="#" alt="@item.AppleWatchModel-@item.ScreenSize-@item.Color-img" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AppleWatchModel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ScreenSize)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cellular)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gps)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HousingMaterial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StrapType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
-            </td>
-        </tr>
-}
-    </tbody>
+<table>
+    <tr>
+        <td>
+            @foreach (var item in Model)
+            {
+                <nav>
+                    <a href="/AppleWatch/Details/@item.Id" style="text-align: center;">
+                        @if (item.AppleWatchModel == "Apple Watch Series 3" && item.Color == "Silver" && item.ScreenSize == 38)
+                        {
+                            <img style="height:300px; width:270px;" src="~/images/@item.AppleWatchModel-@item.ScreenSize-@item.Color .webp"
+                                 alt="@item.AppleWatchModel-@item.ScreenSize-@item.Color-img" />
+                        }
+                        else if (item.AppleWatchModel == "Apple Watch Series 3" && item.Color == "Space Gray" && item.ScreenSize == 38)
+                        {
+                            <img style="height:220px; width:230px;" src="~/images/@item.AppleWatchModel-@item.ScreenSize-@item.Color .webp"
+                                 alt="@item.AppleWatchModel-@item.ScreenSize-@item.Color-img" />
+                        }
+                        else
+                        {
+                            <img src="~/images/@item.AppleWatchModel-@item.ScreenSize-@item.Color .webp"
+                                 alt="@item.AppleWatchModel-@item.ScreenSize-@item.Color-img" />
+                        }
+                        <br>
+                        <br>
+                        <h4>
+                            <span>@item.AppleWatchModel</span>
+                            <br>
+                            <span>@item.ScreenSize mm</span>
+                            <br>
+                            <span>@item.Color</span>
+                            <br>
+                            @if (item.Cellular == "Yes")
+                            {
+                                <span>Cellular</span>
+                                <br>
+                            }
+
+                            @if (item.Gps == "Yes")
+                            {
+                                <span>GPS</span>
+                                <br>
+                            }
+                            <br>
+                            <span style="font-size:25px;">$ @item.Price</span>
+                            <br>
+                            <br>
+                            <br>
+                        </h4>
+                    </a>
+                </nav>
+            }
+        </td>
+    </tr>
 </table>

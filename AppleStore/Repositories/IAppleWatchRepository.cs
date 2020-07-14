@@ -9,5 +9,7 @@ namespace AppleStore.Repositories
         Task<List<AppleWatch>> GetAppleWatchesAsync();
         Task<AppleWatch> GetAppleWatchByIdAsync(int id);
         Task<IEnumerable<AppleWatch>> GetAppleWatchByModelAsync(string model);
+        AppleWatch GetWatchByColorAndSize(int size, string color, string model, string celluar);
+
     }
 }
