@@ -14,7 +14,7 @@ namespace AppleStore.Controllers.V1
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Models()
         {
             var airPodses = await _airPodsRepository.GetAirPodsesAsync();
             return View(airPodses);

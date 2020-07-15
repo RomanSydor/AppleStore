@@ -1,0 +1,38 @@
+﻿@model IEnumerable<AppleStore.Models.AirPods>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2 style="text-align:center;">AirPods</h2>*@
+
+    <h4>
+        <br>
+        <a href="/Home/Index"><< Home Page</a>
+    </h4>
+    <table>
+        <tr>
+            <td>
+                @foreach (var item in Model)
+                {
+                    <br>
+                    <nav>
+                        <a href="/AirPods/Details/@item.Id" style="text-align: center;">
+                            <img style="padding-left: 110px;" src="~/images/@item.AirPodsModel .webp" alt="@item.AirPodsModel-img" />
+                            <br>
+                            <br>
+                            <h4>
+                                <span>@item.AirPodsModel</span>
+                                <br>
+                                <br>
+                                <span style="font-size:25px">$ @item.Price</span>
+                                <br>
+                            </h4>
+                        </a>
+                        <br>
+                    </nav>
+                }
+            </td>
+        </tr>
+    </table>
