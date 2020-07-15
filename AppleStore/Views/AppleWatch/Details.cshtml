@@ -1,7 +1,7 @@
 ﻿@model AppleStore.Models.AppleWatch
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = $"{Model.AppleWatchModel}";
     Layout = "~/Views/Shared/_Layout.cshtml";
     int currentScreenSize = Model.ScreenSize;
     string currentModel = Model.AppleWatchModel;

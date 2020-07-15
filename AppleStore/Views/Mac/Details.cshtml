@@ -1,7 +1,7 @@
 ﻿@model AppleStore.Models.Mac
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = $"{Model.MacModel}";
     Layout = "~/Views/Shared/_Layout.cshtml";
     string currentModel = Model.MacModel;
     string currentType = Model.Type;

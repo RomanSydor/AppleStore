@@ -1,7 +1,7 @@
 ﻿@model AppleStore.Models.IPad
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = $"{Model.IPadModel}";
     Layout = "~/Views/Shared/_Layout.cshtml";
     string currentMemory = Model.Memory;
     string currentModel = Model.TypeOfModel;
