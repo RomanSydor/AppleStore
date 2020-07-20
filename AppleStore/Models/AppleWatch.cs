@@ -15,5 +15,7 @@ namespace AppleStore.Models
         public string StrapType { get; set; }
         public float Price { get; set; }
         public string Description { get; set; }
+        public int AmountOfProduct { get; set; }
+
     }
 }
