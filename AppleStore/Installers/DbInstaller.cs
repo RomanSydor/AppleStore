@@ -1,5 +1,6 @@
 ﻿using AppleStore.Models;
 using AppleStore.Repositories;
+using AppleStore.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,9 @@ namespace AppleStore.Installers
             services.AddScoped<IIPadRepository, IPadRepository>();
             services.AddScoped<IAppleWatchRepository, AppleWatchRepository>();
             services.AddScoped<IAirPodsRepository, AirPodsRepository>();
+            services.AddScoped<IPurchaseRepository, PurchaseRepository>();
+            
+            services.AddScoped<IPurchaseService, PurchaseService>();
         }
     }
 }
