@@ -14,42 +14,53 @@
 }
 else
 {
-<table class="table">
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr style="font-size: 20px;">
-                <td>
-                    <img src="~/images/@item.ProductName-@item.Color .webp" alt="@item.ProductName-@item.Color-img" />
-                </td>
-                <td style="padding-top: 100px">
-                    @item.ProductName @item.Color @item.Memory
+    <table class="table">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr style="font-size: 20px;">
+                    <td>
+                        <img src="~/images/@item.ProductName-@item.Color .webp" alt="@item.ProductName-@item.Color-img" />
+                    </td>
 
-                    @if (item.TableName != "IPhone" && item.TableName != "AirPods")
-                    {
-                        @Html.DisplayFor(modelItem => item.ScreenSize)
-                    }
-                </td>
-                <td style="padding-top: 100px">
-                    @Html.DisplayFor(modelItem => item.Amount) x
+                    <td style="padding-top: 100px">
+                        @item.ProductName @item.Color @item.Memory
 
-                    $@Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td style="padding-top: 100px">
-                    $@Html.DisplayFor(modelItem => item.TotalPrice)
-                </td>
-                <td style="padding-left:50px">
-                    @if (item.TableName == "IPhones")
-                    {
-                        <a href="/IPhone/DeleteFromCart/@item.ProductId/@item.TableName">&Chi;</a>
-                    }
-                </td>
-            </tr>
-            total += item.TotalPrice;
-        }
-    </tbody>
-</table>
-<h2 style="text-align:end;">
-    Total: $@total
-</h2>
+                        @*@if (item.TableName != "IPhone" && item.TableName != "AirPods")
+                            {
+                                @Html.DisplayFor(modelItem => item.ScreenSize)
+                            }*@
+                    </td>
+                    <td style="padding-top: 100px">
+                        @Html.DisplayFor(modelItem => item.Amount) x
+
+                        $@Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td style="padding-top: 100px">
+                        $@Html.DisplayFor(modelItem => item.TotalPrice)
+                    </td>
+                    <td style="padding-left:50px">
+                        @if (item.TableName == "IPhones")
+                        {
+                            <a href="/IPhone/DeleteFromCart/@item.ProductId/@item.TableName">&Chi;</a>
+                        }
+                        @if (item.TableName == "IPads")
+                        {
+                            <a href="/IPad/DeleteFromCart/@item.ProductId/@item.TableName">&Chi;</a>
+                        }
+                    </td>
+                </tr>
+                total += item.TotalPrice;
+            }
+        </tbody>
+    </table>
+
+        <h2 style="text-align:end;">
+            Total: $@total
+        </h2>
+        <br>
+        <h2 style="text-align:center;">
+            <a href="/Purchase/Create" >BUY</a>
+        </h2>
+
 }

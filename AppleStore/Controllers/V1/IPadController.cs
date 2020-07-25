@@ -1,4 +1,5 @@
 ﻿using AppleStore.Repositories;
+using AppleStore.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -7,10 +8,12 @@ namespace AppleStore.Controllers.V1
     public class IPadController : Controller
     {
         private IIPadRepository _iPadRepository;
+        private IIPadService _iPadService;
 
-        public IPadController(IIPadRepository iPadRepository)
+        public IPadController(IIPadRepository iPadRepository, IIPadService iPadService)
         {
             _iPadRepository = iPadRepository;
+            _iPadService = iPadService;
         }
 
         [HttpGet]
@@ -55,6 +58,20 @@ namespace AppleStore.Controllers.V1
             }
 
             return View(iPad);
+        }
+
+        [Route("/IPad/AddToCart/{id}/{amount}")]
+        public IActionResult AddToCart(int id, int amount)
+        {
+            _iPadService.AddToCart(id, amount);
+            return Redirect("/Product/Index");
+        }
+
+        [Route("/IPad/DeleteFromCart/{id}/{table}")]
+        public IActionResult DeleteFromCart(int id, string table)
+        {
+            _iPadService.DeleteFromCart(id, table);
+            return Redirect("/Product/Index");
         }
     }
 }

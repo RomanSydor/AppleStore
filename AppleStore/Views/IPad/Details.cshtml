@@ -7,6 +7,7 @@
     string currentModel = Model.TypeOfModel;
     string currentColor = Model.Color;
     string currentType = Model.Type;
+    int amount = 1;
 
     @if (currentType == "Wi-Fi+LTE")
     {
@@ -19,17 +20,17 @@
 </h4>
 
 <div style="display: flex; justify-content: space-between;">
-    @if (Model.TypeOfModel == "iPad Air" || (Model.TypeOfModel == "iPad Mini 5" && Model.Color != "Gold"))
+    @if (Model.TypeOfModel == "iPad Air" || (Model.IPadModel == "iPad Mini 5" && Model.Color != "Gold"))
     {
-        <img style="height: 480px; width: 480px;" src="~/images/@Model.TypeOfModel-@Model.Color-details .webp" alt="@Model.TypeOfModel-@Model.Color-img" />
+        <img style="height: 480px; width: 480px;" src="~/images/@Model.IPadModel-@Model.Color-details .webp" alt="@Model.TypeOfModel-@Model.Color-img" />
     }
     else if (Model.TypeOfModel == "iPad Mini 5" && Model.Color == "Gold")
     {
-        <img style="height: 480px; width: 400px;" src="~/images/@Model.TypeOfModel-@Model.Color-details .webp" alt="@Model.TypeOfModel-@Model.Color-img" />
+        <img style="height: 480px; width: 400px;" src="~/images/@Model.IPadModel-@Model.Color-details .webp" alt="@Model.TypeOfModel-@Model.Color-img" />
     }
     else
     {
-        <img src="~/images/@Model.TypeOfModel-@Model.Color-details .webp" alt="@Model.TypeOfModel-@Model.Color-img" />
+        <img style="height: 500px" src="~/images/@Model.IPadModel-@Model.Color-details .webp" alt="@Model.TypeOfModel-@Model.Color-img" />
     }
     <div>
         @if (Model.TypeOfModel == "iPad Pro 12.9" || Model.TypeOfModel == "iPad Pro 11")
@@ -109,6 +110,22 @@
         <h1>
             $ @Model.Price
         </h1>
+
+        <br>
+        <br>
+
+        <form action="/IPad/AddToCart/@Model.Id/@amount" method="post">
+            <div class="form-group">
+                <label class="control-label">Amount</label>
+                <input asp-for="@amount" class="form-control" />
+            </div>
+            <br>
+            <br>
+            <h3>
+                <button type="submit" style="color:#18c7c7">ADD TO CART</button>
+            </h3>
+        </form>
+
     </div>
 
     <div>
