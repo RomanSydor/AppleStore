@@ -27,8 +27,14 @@ else
                 }
                 else if (item.TableName == "AppleWatches")
                 {
-                    <td >
+                    <td>
                         <img src="~/images/@item.ProductName-@item.ScreenSize-@item.Color .webp" alt="@item.ProductName-@item.Color-img" />
+                    </td>
+                }
+                else if (item.TableName == "AirPodses")
+                {
+                    <td>
+                        <img src="~/images/@item.ProductName .webp" alt="@item.ProductName-img" />
                     </td>
                 }
                 else
@@ -64,6 +70,10 @@ else
                     @if (item.TableName == "AppleWatches")
                     {
                         <a href="/AppleWatch/DeleteFromCart/@item.ProductId/@item.TableName">&Chi;</a>
+                    }
+                    @if (item.TableName == "AirPodses")
+                    {
+                        <a href="/AirPods/DeleteFromCart/@item.ProductId/@item.TableName">&Chi;</a>
                     }
                 </td>
             </tr>

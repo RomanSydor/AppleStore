@@ -27,6 +27,7 @@ namespace AppleStore.Installers
             services.AddScoped<IIPadService, IPadService>();
             services.AddScoped<IMacService, MacService>();
             services.AddScoped<IAppleWatchService, AppleWatchService>();
+            services.AddScoped<IAirPodsService, AirPodsService>();
         }
     }
 }
