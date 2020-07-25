@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AppleStore.Models;
 
 namespace AppleStore.Services
 {
     public interface IIPhoneService
     {
+        void AddToCart(int id, int amount);
+        void DeleteFromCart(int id, string table);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AppleStore.Repositories;
+using AppleStore.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -7,9 +8,11 @@ namespace AppleStore.Controllers.V1
     public class IPhoneController : Controller
     {
         private IIPhoneRepository _iPhoneRepository;
-        public IPhoneController(IIPhoneRepository iPhoneRepository)
+        private IIPhoneService _iPhoneService;
+        public IPhoneController(IIPhoneRepository iPhoneRepository, IIPhoneService iPhoneService)
         {
             _iPhoneRepository = iPhoneRepository;
+            _iPhoneService = iPhoneService;
         }
 
         [HttpGet]
@@ -53,6 +56,20 @@ namespace AppleStore.Controllers.V1
             }
 
             return View(iPhone);
+        }
+
+        [Route("/IPhone/AddToCart/{id}/{amount}")]
+        public IActionResult AddToCart(int id, int amount) 
+        {
+            _iPhoneService.AddToCart(id, amount);
+            return Redirect("/Product/Index");
+        }
+
+        [Route("/IPhone/DeleteFromCart/{id}/{table}")]
+        public IActionResult DeleteFromCart(int id, string table)
+        {
+            _iPhoneService.DeleteFromCart(id, table);
+            return Redirect("/Product/Index");
         }
     }
 }

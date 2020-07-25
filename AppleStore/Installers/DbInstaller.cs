@@ -23,6 +23,7 @@ namespace AppleStore.Installers
             services.AddScoped<IPurchaseRepository, PurchaseRepository>();
             
             services.AddScoped<IPurchaseService, PurchaseService>();
+            services.AddScoped<IIPhoneService, IPhoneService>();
         }
     }
 }
