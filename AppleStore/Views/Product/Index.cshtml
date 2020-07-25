@@ -19,17 +19,20 @@ else
             @foreach (var item in Model)
             {
                 <tr style="font-size: 20px;">
-                    <td>
-                        <img src="~/images/@item.ProductName-@item.Color .webp" alt="@item.ProductName-@item.Color-img" />
-                    </td>
-
+                    @if (item.TableName == "Macs")
+                    {
+                        <td style="padding-top: 20px; padding-bottom: 20px;">
+                            <img src="~/images/@item.ProductName-@item.Color-@item.ScreenSize .webp" alt="@item.ProductName-@item.Color-img" />
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <img src="~/images/@item.ProductName-@item.Color .webp" alt="@item.ProductName-@item.Color-img" />
+                        </td>
+                    }
                     <td style="padding-top: 100px">
                         @item.ProductName @item.Color @item.Memory
-
-                        @*@if (item.TableName != "IPhone" && item.TableName != "AirPods")
-                            {
-                                @Html.DisplayFor(modelItem => item.ScreenSize)
-                            }*@
                     </td>
                     <td style="padding-top: 100px">
                         @Html.DisplayFor(modelItem => item.Amount) x
@@ -48,6 +51,10 @@ else
                         {
                             <a href="/IPad/DeleteFromCart/@item.ProductId/@item.TableName">&Chi;</a>
                         }
+                        @if (item.TableName == "Macs")
+                        {
+                            <a href="/Mac/DeleteFromCart/@item.ProductId/@item.TableName">&Chi;</a>
+                        }
                     </td>
                 </tr>
                 total += item.TotalPrice;
@@ -55,12 +62,12 @@ else
         </tbody>
     </table>
 
-        <h2 style="text-align:end;">
-            Total: $@total
-        </h2>
-        <br>
-        <h2 style="text-align:center;">
-            <a href="/Purchase/Create" >BUY</a>
-        </h2>
+    <h2 style="text-align:end;">
+        Total: $@total
+    </h2>
+    <br>
+    <h2 style="text-align:center;">
+        <a href="/Purchase/Create">BUY</a>
+    </h2>
 
 }

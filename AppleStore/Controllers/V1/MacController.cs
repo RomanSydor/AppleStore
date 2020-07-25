@@ -1,4 +1,5 @@
 ﻿using AppleStore.Repositories;
+using AppleStore.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -7,10 +8,12 @@ namespace AppleStore.Controllers.V1
     public class MacController : Controller
     {
         private IMacRepository _macRepository;
+        private IMacService _macService;
 
-        public MacController(IMacRepository macRepository)
+        public MacController(IMacRepository macRepository, IMacService macService)
         {
             _macRepository = macRepository;
+            _macService = macService;
         }
 
         [HttpGet]
@@ -38,6 +41,20 @@ namespace AppleStore.Controllers.V1
                 return NotFound();
             }
             return View(mac);
+        }
+
+        [Route("/Mac/AddToCart/{id}/{amount}")]
+        public IActionResult AddToCart(int id, int amount)
+        {
+            _macService.AddToCart(id, amount);
+            return Redirect("/Product/Index");
+        }
+
+        [Route("/Mac/DeleteFromCart/{id}/{table}")]
+        public IActionResult DeleteFromCart(int id, string table)
+        {
+            _macService.DeleteFromCart(id, table);
+            return Redirect("/Product/Index");
         }
     }
 }
