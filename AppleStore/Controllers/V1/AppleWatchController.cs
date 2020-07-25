@@ -1,8 +1,6 @@
 ﻿using AppleStore.Repositories;
+using AppleStore.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace AppleStore.Controllers.V1
@@ -10,10 +8,11 @@ namespace AppleStore.Controllers.V1
     public class AppleWatchController : Controller
     {
         private IAppleWatchRepository _appleWatchRepository;
-
-        public AppleWatchController(IAppleWatchRepository appleWatchRepository)
+        private IAppleWatchService _appleWatchService;
+        public AppleWatchController(IAppleWatchRepository appleWatchRepository, IAppleWatchService appleWatchService)
         {
             _appleWatchRepository = appleWatchRepository;
+            _appleWatchService = appleWatchService;
         }
 
         [HttpGet]
@@ -50,6 +49,20 @@ namespace AppleStore.Controllers.V1
             }
 
             return View(watch);
+        }
+
+        [Route("/AppleWatch/AddToCart/{id}/{amount}")]
+        public IActionResult AddToCart(int id, int amount)
+        {
+            _appleWatchService.AddToCart(id, amount);
+            return Redirect("/Product/Index");
+        }
+
+        [Route("/AppleWatch/DeleteFromCart/{id}/{table}")]
+        public IActionResult DeleteFromCart(int id, string table)
+        {
+            _appleWatchService.DeleteFromCart(id, table);
+            return Redirect("/Product/Index");
         }
     }
 }

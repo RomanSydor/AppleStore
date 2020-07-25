@@ -7,7 +7,7 @@
     string currentModel = Model.AppleWatchModel;
     string currentColor = Model.Color;
     string currentCelluar = Model.Cellular;
-
+    int amount = 1;
 }
 <br>
 <h4>
@@ -77,6 +77,19 @@
         <h1>
             $ @Model.Price
         </h1>
+
+        <form action="/AppleWatch/AddToCart/@Model.Id/@amount" method="post">
+            <div class="form-group">
+                <label class="control-label">Amount</label>
+                <input asp-for="@amount" class="form-control" />
+            </div>
+            <br>
+            <br>
+            <h3>
+                <button type="submit" style="color:#18c7c7">ADD TO CART</button>
+            </h3>
+        </form>
+
     </div>
     
     <div>

@@ -18,45 +18,55 @@ else
         <tbody>
             @foreach (var item in Model)
             {
-                <tr style="font-size: 20px;">
+            <tr style="font-size: 20px;">
+                @if (item.TableName == "Macs")
+                {
+                    <td style="padding-top: 20px; padding-bottom: 20px;">
+                        <img src="~/images/@item.ProductName-@item.Color-@item.ScreenSize .webp" alt="@item.ProductName-@item.Color-img" />
+                    </td>
+                }
+                else if (item.TableName == "AppleWatches")
+                {
+                    <td >
+                        <img src="~/images/@item.ProductName-@item.ScreenSize-@item.Color .webp" alt="@item.ProductName-@item.Color-img" />
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <img src="~/images/@item.ProductName-@item.Color .webp" alt="@item.ProductName-@item.Color-img" />
+                    </td>
+                }
+                <td style="padding-top: 100px">
+                    @item.ProductName @item.Color @item.Memory
+                </td>
+                <td style="padding-top: 100px">
+                    @Html.DisplayFor(modelItem => item.Amount) x
+
+                    $@Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td style="padding-top: 100px">
+                    $@Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td style="padding-left:50px">
+                    @if (item.TableName == "IPhones")
+                    {
+                        <a href="/IPhone/DeleteFromCart/@item.ProductId/@item.TableName">&Chi;</a>
+                    }
+                    @if (item.TableName == "IPads")
+                    {
+                        <a href="/IPad/DeleteFromCart/@item.ProductId/@item.TableName">&Chi;</a>
+                    }
                     @if (item.TableName == "Macs")
                     {
-                        <td style="padding-top: 20px; padding-bottom: 20px;">
-                            <img src="~/images/@item.ProductName-@item.Color-@item.ScreenSize .webp" alt="@item.ProductName-@item.Color-img" />
-                        </td>
+                        <a href="/Mac/DeleteFromCart/@item.ProductId/@item.TableName">&Chi;</a>
                     }
-                    else
+                    @if (item.TableName == "AppleWatches")
                     {
-                        <td>
-                            <img src="~/images/@item.ProductName-@item.Color .webp" alt="@item.ProductName-@item.Color-img" />
-                        </td>
+                        <a href="/AppleWatch/DeleteFromCart/@item.ProductId/@item.TableName">&Chi;</a>
                     }
-                    <td style="padding-top: 100px">
-                        @item.ProductName @item.Color @item.Memory
-                    </td>
-                    <td style="padding-top: 100px">
-                        @Html.DisplayFor(modelItem => item.Amount) x
-
-                        $@Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td style="padding-top: 100px">
-                        $@Html.DisplayFor(modelItem => item.TotalPrice)
-                    </td>
-                    <td style="padding-left:50px">
-                        @if (item.TableName == "IPhones")
-                        {
-                            <a href="/IPhone/DeleteFromCart/@item.ProductId/@item.TableName">&Chi;</a>
-                        }
-                        @if (item.TableName == "IPads")
-                        {
-                            <a href="/IPad/DeleteFromCart/@item.ProductId/@item.TableName">&Chi;</a>
-                        }
-                        @if (item.TableName == "Macs")
-                        {
-                            <a href="/Mac/DeleteFromCart/@item.ProductId/@item.TableName">&Chi;</a>
-                        }
-                    </td>
-                </tr>
+                </td>
+            </tr>
                 total += item.TotalPrice;
             }
         </tbody>
