@@ -16,22 +16,43 @@ namespace AppleStore.Services
 
         public void AddToCart(int id, int amount)
         {
+            Product existIPhone = null;
             var iPhone = _dataContext.IPhones
                 .SingleOrDefault(i => i.Id == id);
 
-            var cartItem = new Product();
-            cartItem.ProductId = iPhone.Id;
-            cartItem.TableName = "IPhones";
-            cartItem.ProductName = iPhone.IPhoneModel;
-            cartItem.Color = iPhone.Color;
-            cartItem.Memory = iPhone.Memory;
-            cartItem.Amount = amount;
-            cartItem.Price = iPhone.Price;
-            cartItem.TotalPrice += amount * iPhone.Price;
+            foreach (var item in _cart.CartList)
+            {
+                if (item.ProductId == iPhone.Id && item.TableName == "IPhones")
+                {
+                    existIPhone = _cart.CartList
+                        .SingleOrDefault(i => i.ProductId == item.ProductId
+                        && i.TableName == item.TableName);
+                }
+            }
 
-            _cart.CartList.Add(cartItem);
+            if (existIPhone != null)
+            {
+                existIPhone.Amount += amount;
+                existIPhone.TotalPrice += amount * existIPhone.Price;
+                iPhone.AmountOfProduct -= amount;
+            }
+            else
+            {
+                var cartItem = new Product();
+                cartItem.ProductId = iPhone.Id;
+                cartItem.TableName = "IPhones";
+                cartItem.ProductName = iPhone.IPhoneModel;
+                cartItem.Color = iPhone.Color;
+                cartItem.Memory = iPhone.Memory;
+                cartItem.Amount = amount;
+                cartItem.Price = iPhone.Price;
+                cartItem.TotalPrice += amount * iPhone.Price;
 
-            iPhone.AmountOfProduct -= amount;
+                _cart.CartList.Add(cartItem);
+
+                iPhone.AmountOfProduct -= amount;
+            }
+
             _dataContext.SaveChanges();
         }
 
