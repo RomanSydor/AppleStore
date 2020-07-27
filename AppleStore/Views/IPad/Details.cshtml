@@ -32,92 +32,101 @@
     {
         <img style="height: 500px" src="~/images/@Model.IPadModel-@Model.Color-details .webp" alt="@Model.TypeOfModel-@Model.Color-img" />
     }
-    <div>
-        @if (Model.TypeOfModel == "iPad Pro 12.9" || Model.TypeOfModel == "iPad Pro 11")
-        {
-            <br><br><br><br><br>
-            <h5>Color:</h5>
-            <nav>
-                <a href="/IPad/Details/@currentModel/@currentType/Space Gray/@currentMemory">
-                    Space Gray
-                </a>
-                <a href="/IPad/Details/@currentModel/@currentType/Silver/@currentMemory">
-                    Silver
-                </a>
-            </nav>
-            <h5>Memory:</h5>
-            <nav>
-                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/128 Gb">
-                    128 Gb
-                </a>
-                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/256 Gb">
-                    256 Gb
-                </a>
-                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/512 Gb">
-                    512 Gb
-                </a>
-                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/1 Tb">
-                    1 Tb
-                </a>
-            </nav>
-        }
-        else if (Model.TypeOfModel == "iPad 10.2" || Model.TypeOfModel == "iPad Air" || Model.TypeOfModel == "iPad Mini 5")
-        {
-            <br><br><br><br><br>
-            <h5>Color:</h5>
-            <nav>
-                <a href="/IPad/Details/@currentModel/@currentType/Space Gray/@currentMemory">
-                    Space Gray
-                </a>
-                <a href="/IPad/Details/@currentModel/@currentType/Silver/@currentMemory">
-                    Silver
-                </a>
-                <a href="/IPad/Details/@currentModel/@currentType/Gold/@currentMemory">
-                    Gold
-                </a>
-            </nav>
-            <h5>Memory:</h5>
-            @if (Model.TypeOfModel == "iPad 10.2")
-            {
-                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/32 Gb">
-                    32 Gb
-                </a>
-                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/128 Gb">
-                    128 Gb
-                </a>
-            }
-            @if (Model.TypeOfModel == "iPad Air" || Model.TypeOfModel == "iPad Mini 5")
-            {
-                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/64 Gb">
-                    64 Gb
-                </a>
-                <a href="/IPad/Details/@currentModel/@currentType/@currentColor/256 Gb">
-                    256 Gb
-                </a>
-            }
-        }
-        <h5>Type:</h5>
+<div>
+    @if (Model.TypeOfModel == "iPad Pro 12.9" || Model.TypeOfModel == "iPad Pro 11")
+    {
+        <br><br><br><br><br>
+        <h5>Color:</h5>
         <nav>
-            <a href="/IPad/Details/@currentModel/Wi-Fi/@currentColor/@currentMemory">
-                Wi-Fi
+            <a href="/IPad/Details/@currentModel/@currentType/Space Gray/@currentMemory">
+                Space Gray
             </a>
-            <a href="/IPad/Details/@currentModel/Wi-Fi-pl-LTE/@currentColor/@currentMemory">
-                Wi-Fi+LTE
+            <a href="/IPad/Details/@currentModel/@currentType/Silver/@currentMemory">
+                Silver
             </a>
         </nav>
-        <br>
-        <br>
-        <h1>
-            $ @Model.Price
-        </h1>
+        <h5>Memory:</h5>
+        <nav>
+            <a href="/IPad/Details/@currentModel/@currentType/@currentColor/128 Gb">
+                128 Gb
+            </a>
+            <a href="/IPad/Details/@currentModel/@currentType/@currentColor/256 Gb">
+                256 Gb
+            </a>
+            <a href="/IPad/Details/@currentModel/@currentType/@currentColor/512 Gb">
+                512 Gb
+            </a>
+            <a href="/IPad/Details/@currentModel/@currentType/@currentColor/1 Tb">
+                1 Tb
+            </a>
+        </nav>
+    }
+    else if (Model.TypeOfModel == "iPad 10.2" || Model.TypeOfModel == "iPad Air" || Model.TypeOfModel == "iPad Mini 5")
+    {
+        <br><br><br><br><br>
+        <h5>Color:</h5>
+        <nav>
+            <a href="/IPad/Details/@currentModel/@currentType/Space Gray/@currentMemory">
+                Space Gray
+            </a>
+            <a href="/IPad/Details/@currentModel/@currentType/Silver/@currentMemory">
+                Silver
+            </a>
+            <a href="/IPad/Details/@currentModel/@currentType/Gold/@currentMemory">
+                Gold
+            </a>
+        </nav>
+        <h5>Memory:</h5>
+        @if (Model.TypeOfModel == "iPad 10.2")
+        {
+            <a href="/IPad/Details/@currentModel/@currentType/@currentColor/32 Gb">
+                32 Gb
+            </a>
+            <a href="/IPad/Details/@currentModel/@currentType/@currentColor/128 Gb">
+                128 Gb
+            </a>
+        }
+        @if (Model.TypeOfModel == "iPad Air" || Model.TypeOfModel == "iPad Mini 5")
+        {
+            <a href="/IPad/Details/@currentModel/@currentType/@currentColor/64 Gb">
+                64 Gb
+            </a>
+            <a href="/IPad/Details/@currentModel/@currentType/@currentColor/256 Gb">
+                256 Gb
+            </a>
+        }
+    }
+    <h5>Type:</h5>
+    <nav>
+        <a href="/IPad/Details/@currentModel/Wi-Fi/@currentColor/@currentMemory">
+            Wi-Fi
+        </a>
+        <a href="/IPad/Details/@currentModel/Wi-Fi-pl-LTE/@currentColor/@currentMemory">
+            Wi-Fi+LTE
+        </a>
+    </nav>
+    <br>
+    <br>
+    <h1>
+        $ @Model.Price
+    </h1>
 
-        <br>
-        <br>
+    <br>
+    <br>
 
+    @if (Model.AmountOfProduct <= 0)
+    {
+        <h3 style="color:#fe5d00">
+            Not Available
+        </h3>
+    }
+    else
+    {
+        <span style="color:blue; font-size:17px;">Available to purchase: <b>@Model.AmountOfProduct</b></span>
         <form action="/IPad/AddToCart/@Model.Id/@amount" method="post">
             <div class="form-group">
                 <label class="control-label">Amount</label>
-                <input asp-for="@amount" class="form-control" />
+                <input asp-for="@amount" class="form-control"  min="1" max="@Model.AmountOfProduct" />
             </div>
             <br>
             <br>
@@ -125,8 +134,8 @@
                 <button type="submit" style="color:#18c7c7">ADD TO CART</button>
             </h3>
         </form>
-
-    </div>
+    }
+</div>
 
     <div>
         <hr />

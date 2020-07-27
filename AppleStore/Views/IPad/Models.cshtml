@@ -32,6 +32,16 @@
                         <br>
                         <span style="font-size:25px;">$ @item.Price</span>
                         <br>
+                        @if (item.AmountOfProduct <= 0)
+                        {
+                            <span style="font-size:17px; color:#fe5d00">Not Available</span>
+                            <br>
+                        }
+                        else
+                        {
+                            <span style="font-size:17px; color:#40b157">Available  Now</span>
+                            <br>
+                        }
                     </h4>
                 </a>
                 <br>

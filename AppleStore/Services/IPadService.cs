@@ -18,22 +18,43 @@ namespace AppleStore.Services
 
         public void AddToCart(int id, int amount)
         {
+            Product existIPad = null;
             var iPad = _dataContext.IPads
                 .SingleOrDefault(i => i.Id == id);
 
-            var cartItem = new Product();
-            cartItem.ProductId = iPad.Id;
-            cartItem.TableName = "IPads";
-            cartItem.ProductName = iPad.IPadModel;
-            cartItem.Color = iPad.Color;
-            cartItem.Memory = iPad.Memory;
-            cartItem.Amount = amount;
-            cartItem.Price = iPad.Price;
-            cartItem.TotalPrice += amount * iPad.Price;
+            foreach (var item in _cart.CartList)
+            {
+                if (item.ProductId == iPad.Id && item.TableName == "IPads") 
+                {
+                    existIPad = _cart.CartList
+                        .SingleOrDefault(i => i.ProductId == item.ProductId
+                        && i.TableName == item.TableName);
+                }
+            }
 
-            _cart.CartList.Add(cartItem);
+            if (existIPad != null)
+            {
+                existIPad.Amount += amount;
+                existIPad.TotalPrice += amount * existIPad.Price;
+                iPad.AmountOfProduct -= amount;
+            }
+            else
+            {
+                var cartItem = new Product();
+                cartItem.ProductId = iPad.Id;
+                cartItem.TableName = "IPads";
+                cartItem.ProductName = iPad.IPadModel;
+                cartItem.Color = iPad.Color;
+                cartItem.Memory = iPad.Memory;
+                cartItem.Amount = amount;
+                cartItem.Price = iPad.Price;
+                cartItem.TotalPrice += amount * iPad.Price;
 
-            iPad.AmountOfProduct -= amount;
+                _cart.CartList.Add(cartItem);
+
+                iPad.AmountOfProduct -= amount;
+            }
+
             _dataContext.SaveChanges();
         }
 
