@@ -8,30 +8,40 @@
 
 <br>
 <h4>
-    <a href="/AirPods/Models/@Model.AirPodsModel"> << @Model.AirPodsModel</a>
+    <a href="/AirPods/Models/@Model.AirPodsModel"> << AirPods</a>
 </h4>
 <br>
 <div style="display: flex; justify-content: space-evenly">
 
-    <img src="~/images/@Model.AirPodsModel .webp" alt="@Model.AirPodsModel-img" />
+    <img style="height: 310px" src="~/images/@Model.AirPodsModel .webp" alt="@Model.AirPodsModel-img" />
 
     <div style="margin-top: 70px">
         <h1>
             $ @Model.Price
         </h1>
 
-        <form action="/AirPods/AddToCart/@Model.Id/@amount" method="post">
-            <div class="form-group">
-                <label class="control-label">Amount</label>
-                <input asp-for="@amount" class="form-control" />
-            </div>
-            <br>
-            <br>
-            <h3>
-                <button type="submit" style="color:#18c7c7">ADD TO CART</button>
+        @if (Model.AmountOfProduct <= 0)
+        {
+            <h3 style="color:#fe5d00">
+                Not Available
             </h3>
-        </form>
-
+        }
+        else
+        {
+            <br>
+            <span style="color:blue; font-size:17px;">Available to purchase: <b>@Model.AmountOfProduct</b></span>
+            <form action="/AirPods/AddToCart/@Model.Id/@amount" method="post">
+                <div class="form-group">
+                    <label class="control-label">Amount</label>
+                    <input asp-for="@amount" class="form-control" min="1" max="@Model.AmountOfProduct" />
+                </div>
+                <br>
+                <br>
+                <h3>
+                    <button type="submit" style="color:#18c7c7">ADD TO CART</button>
+                </h3>
+            </form>
+        }
     </div>
     
     <div style="margin-top: 45px">

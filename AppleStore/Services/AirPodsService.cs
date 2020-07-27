@@ -16,20 +16,41 @@ namespace AppleStore.Services
 
         public void AddToCart(int id, int amount)
         {
+            Product existPods = null;
             var pods = _dataContext.AirPodses
                 .SingleOrDefault(i => i.Id == id);
 
-            var cartItem = new Product();
-            cartItem.ProductId = pods.Id;
-            cartItem.TableName = "AirPodses";
-            cartItem.ProductName = pods.AirPodsModel;
-            cartItem.Amount = amount;
-            cartItem.Price = pods.Price;
-            cartItem.TotalPrice += amount * pods.Price;
+            foreach (var item in _cart.CartList)
+            {
+                if (item.ProductId == pods.Id && item.TableName == "AirPodses")
+                {
+                    existPods = _cart.CartList
+                        .SingleOrDefault(i => i.ProductId == item.ProductId
+                        && i.TableName == item.TableName);
+                }
+            }
 
-            _cart.CartList.Add(cartItem);
+            if (existPods != null)
+            {
+                existPods.Amount += amount;
+                existPods.TotalPrice += amount * existPods.Price;
+                pods.AmountOfProduct -= amount;
+            }
+            else
+            {
+                var cartItem = new Product();
+                cartItem.ProductId = pods.Id;
+                cartItem.TableName = "AirPodses";
+                cartItem.ProductName = pods.AirPodsModel;
+                cartItem.Amount = amount;
+                cartItem.Price = pods.Price;
+                cartItem.TotalPrice += amount * pods.Price;
 
-            pods.AmountOfProduct -= amount;
+                _cart.CartList.Add(cartItem);
+
+                pods.AmountOfProduct -= amount;
+            }
+
             _dataContext.SaveChanges();
         }
 
