@@ -29,16 +29,26 @@
     }
 
 
-    <div>
-        <br><br><br><br><br><br><br>
-        <h1>
-            $ @Model.Price
-        </h1>
+<div>
+    <br><br><br><br><br><br><br>
+    <h1>
+        $ @Model.Price
+    </h1>
 
+    @if (Model.AmountOfProduct <= 0)
+    {
+        <h3 style="color:#fe5d00">
+            Not Available
+        </h3>
+    }
+    else
+    {
+        <br>
+        <span style="color:blue; font-size:17px;">Available to purchase: <b>@Model.AmountOfProduct</b></span>
         <form action="/Mac/AddToCart/@Model.Id/@amount" method="post">
             <div class="form-group">
                 <label class="control-label">Amount</label>
-                <input asp-for="@amount" class="form-control" />
+                <input asp-for="@amount" class="form-control" min="1" max="@Model.AmountOfProduct"/>
             </div>
             <br>
             <br>
@@ -46,8 +56,8 @@
                 <button type="submit" style="color:#18c7c7">ADD TO CART</button>
             </h3>
         </form>
-
-    </div>
+    }
+</div>
 
     <div>
         <dl class="dl-horizontal">
