@@ -45,6 +45,10 @@ else
                 }
                 <td style="padding-top: 100px">
                     @item.ProductName @item.Color @item.Memory
+                    @if (item.TableName == "AppleWatches")
+                    {
+                        @item.ScreenSize
+                    }mm
                 </td>
                 <td style="padding-top: 100px">
                     @Html.DisplayFor(modelItem => item.Amount) x

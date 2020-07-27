@@ -14,142 +14,152 @@
     <a href="/AppleWatch/Models/@Model.AppleWatchModel"> << @Model.AppleWatchModel</a>
 </h4>
 <br><br>
-<div style="display: flex; justify-content:space-between;">
-    <img src="~/images/@Model.AppleWatchModel-@Model.ScreenSize-@Model.Color-details .webp" 
-         alt="@Model.AppleWatchModel-@Model.ScreenSize-@Model.Color-img" />
-    <div>
-        <br><br><br><br>
-        @if (Model.AppleWatchModel == "Apple Watch Series 5")
-        {
-            <h5>Color:</h5>
-            <nav>
-                <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/Space Gray/@currentCelluar">
-                    Space Gray
-                </a>
-                <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/Silver/@currentCelluar">
-                    Silver
-                </a>
-                <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/Gold/@currentCelluar">
-                    Gold
-                </a>
-            </nav>
-            <h5>Screen size:</h5>
-            <nav>
-                <a href="/AppleWatch/Details/@currentModel/40/@currentColor/@currentCelluar">
-                    40 mm
-                </a>
-                <a href="/AppleWatch/Details/@currentModel/44/@currentColor/@currentCelluar">
-                    44 mm
-                </a>
-            </nav>
-            <h5>Celluar:</h5>
-            <nav>
-                <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/@currentColor/Yes">
-                    Yes
-                </a>
-                <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/@currentColor/No">
-                    No
-                </a>
-            </nav>
-        }
-        @if (Model.AppleWatchModel == "Apple Watch Series 3")
-        {
-            <h5>Color:</h5>
-            <nav>
-                <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/Space Gray/@currentCelluar">
-                    Space Gray
-                </a>
-                <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/Silver/@currentCelluar">
-                    Silver
-                </a>
-            </nav>
-            <h5>Screen size:</h5>
-            <nav>
-                <a href="/AppleWatch/Details/@currentModel/38/@currentColor/@currentCelluar">
-                    38 mm
-                </a>
-                <a href="/AppleWatch/Details/@currentModel/42/@currentColor/@currentCelluar">
-                    42 mm
-                </a>
-            </nav>
-        }
-        <br>
-        <h1>
-            $ @Model.Price
-        </h1>
+    <div style="display: flex; justify-content:space-between;">
+        <img src="~/images/@Model.AppleWatchModel-@Model.ScreenSize-@Model.Color-details .webp"
+             alt="@Model.AppleWatchModel-@Model.ScreenSize-@Model.Color-img" />
+        <div>
+            <br><br><br><br>
+            @if (Model.AppleWatchModel == "Apple Watch Series 5")
+            {
+                <h5>Color:</h5>
+                <nav>
+                    <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/Space Gray/@currentCelluar">
+                        Space Gray
+                    </a>
+                    <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/Silver/@currentCelluar">
+                        Silver
+                    </a>
+                    <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/Gold/@currentCelluar">
+                        Gold
+                    </a>
+                </nav>
+                <h5>Screen size:</h5>
+                <nav>
+                    <a href="/AppleWatch/Details/@currentModel/40/@currentColor/@currentCelluar">
+                        40 mm
+                    </a>
+                    <a href="/AppleWatch/Details/@currentModel/44/@currentColor/@currentCelluar">
+                        44 mm
+                    </a>
+                </nav>
+                <h5>Celluar:</h5>
+                <nav>
+                    <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/@currentColor/Yes">
+                        Yes
+                    </a>
+                    <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/@currentColor/No">
+                        No
+                    </a>
+                </nav>
+            }
+            @if (Model.AppleWatchModel == "Apple Watch Series 3")
+            {
+                <h5>Color:</h5>
+                <nav>
+                    <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/Space Gray/@currentCelluar">
+                        Space Gray
+                    </a>
+                    <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/Silver/@currentCelluar">
+                        Silver
+                    </a>
+                </nav>
+                <h5>Screen size:</h5>
+                <nav>
+                    <a href="/AppleWatch/Details/@currentModel/38/@currentColor/@currentCelluar">
+                        38 mm
+                    </a>
+                    <a href="/AppleWatch/Details/@currentModel/42/@currentColor/@currentCelluar">
+                        42 mm
+                    </a>
+                </nav>
+            }
+            <br>
+            <h1>
+                $ @Model.Price
+            </h1>
 
-        <form action="/AppleWatch/AddToCart/@Model.Id/@amount" method="post">
-            <div class="form-group">
-                <label class="control-label">Amount</label>
-                <input asp-for="@amount" class="form-control" />
-            </div>
-            <br>
-            <br>
-            <h3>
-                <button type="submit" style="color:#18c7c7">ADD TO CART</button>
-            </h3>
-        </form>
+            @if (Model.AmountOfProduct <= 0)
+            {
+                <h3 style="color:#fe5d00">
+                    Not Available
+                </h3>
+            }
+            else
+            {
+                <br>
+                <span style="color:blue; font-size:17px;">Available to purchase: <b>@Model.AmountOfProduct</b></span>
+                <form action="/AppleWatch/AddToCart/@Model.Id/@amount" method="post">
+                    <div class="form-group">
+                        <label class="control-label">Amount</label>
+                        <input asp-for="@amount" class="form-control" min="1" max="@Model.AmountOfProduct"/>
+                    </div>
+                    <br>
+                    <br>
+                    <h3>
+                        <button type="submit" style="color:#18c7c7">ADD TO CART</button>
+                    </h3>
+                </form>
+            }
+        </div>
 
+        <div>
+            <br><br><br>
+            <dl class="dl-horizontal">
+                <dt>
+                    Model:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AppleWatchModel)
+                </dd>
+                <br>
+                <dt>
+                    Screen size:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ScreenSize) mm
+                </dd>
+                <br>
+                <dt>
+                    Color:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Color)
+                </dd>
+                <br>
+                <dt>
+                    Celluar:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Cellular)
+                </dd>
+                <br>
+                <dt>
+                    GPS:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Gps)
+                </dd>
+                <br>
+                <dt>
+                    Housing material:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.HousingMaterial)
+                </dd>
+                <br>
+                <dt>
+                    Strap type:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.StrapType)
+                </dd>
+                <br>
+                <dt>
+                    Description:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+            </dl>
+        </div>
     </div>
-    
-    <div>
-        <br><br><br>
-        <dl class="dl-horizontal">
-            <dt>
-                Model:
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.AppleWatchModel)
-            </dd>
-            <br>
-            <dt>
-                Screen size:
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.ScreenSize) mm
-            </dd>
-            <br>
-            <dt>
-                Color:
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Color)
-            </dd>
-            <br>
-            <dt>
-                Celluar:
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Cellular)
-            </dd>
-            <br>
-            <dt>
-                GPS:
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Gps)
-            </dd>
-            <br>
-            <dt>
-                Housing material:
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.HousingMaterial)
-            </dd>
-            <br>
-            <dt>
-                Strap type:
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.StrapType)
-            </dd>
-            <br>
-            <dt>
-                Description:
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-        </dl>
-    </div>
-</div>
