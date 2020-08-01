@@ -11,42 +11,77 @@
 }
 <br>
 <h4>
-    <a href="/AppleWatch/Models/@Model.AppleWatchModel"> << @Model.AppleWatchModel</a>
+    <a href="/AppleWatch/Models/@Model.AppleWatchModel"> < @Model.AppleWatchModel</a>
 </h4>
 <br><br>
     <div style="display: flex; justify-content:space-between;">
-        <img src="~/images/@Model.AppleWatchModel-@Model.ScreenSize-@Model.Color-details .webp"
-             alt="@Model.AppleWatchModel-@Model.ScreenSize-@Model.Color-img" />
         <div>
-            <br><br><br><br>
+            <img style="height: 480px" src="~/images/@Model.AppleWatchModel-@Model.ScreenSize-@Model.Color-details .webp"
+                 alt="@Model.AppleWatchModel-@Model.ScreenSize-@Model.Color-img" />
+
+            @if (Model.AmountOfProduct <= 0)
+            {
+                <h3 style="color:#fe5d00; text-align:center;">
+                    Not Available
+                </h3>
+            }
+            else
+            {
+                <form style="padding-top:20px" action="/AppleWatch/AddToCart/@Model.Id/@amount" method="post">
+                    <div style=" text-align: center;">
+                        <label style="font-size:20px; text-align:center;">Amount</label>
+                        <br>
+                        <input style="margin-left: 180px" asp-for="@amount" class="col-lg-3" min="1" max="@Model.AmountOfProduct" />
+                    </div>
+                    <h3>
+                        <button type="submit" style="color:#18c7c7; background-color: #222222;
+                    margin-top: 25px; margin-left: 165px;  height:50px; width: 150px;" class="btn btn-default">
+                            ADD TO CART
+                        </button>
+                    </h3>
+                </form>
+            }
+
+        </div>
+        <div>
+            <br><br>
             @if (Model.AppleWatchModel == "Apple Watch Series 5")
             {
-                <h5>Color:</h5>
+                <h5 style="font-size:20px; text-align:center;"><b>Color</b></h5>
                 <nav>
                     <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/Space Gray/@currentCelluar">
+                        <img style="height:25px;" src="~/images/space-gray.jpg" alt="space-gray-img" />
                         Space Gray
                     </a>
+                    <br><br>
                     <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/Silver/@currentCelluar">
+                        <img style="height:25px;" src="~/images/silver.jpg" alt="silver-img" />
                         Silver
                     </a>
+                    <br><br>
                     <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/Gold/@currentCelluar">
+                        <img style="height:25px;" src="~/images/gold.jpg" alt="gold-img" />
                         Gold
                     </a>
                 </nav>
-                <h5>Screen size:</h5>
+                <br>
+                <h5 style="font-size:20px; text-align:center;"><b>Screen size</b></h5>
                 <nav>
                     <a href="/AppleWatch/Details/@currentModel/40/@currentColor/@currentCelluar">
                         40 mm
                     </a>
+                    <br><br>
                     <a href="/AppleWatch/Details/@currentModel/44/@currentColor/@currentCelluar">
                         44 mm
                     </a>
                 </nav>
-                <h5>Celluar:</h5>
+                <br>
+                <h5 style="font-size:20px; text-align:center;"><b>Celluar</b></h5>
                 <nav>
                     <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/@currentColor/Yes">
                         Yes
                     </a>
+                    <br><br>
                     <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/@currentColor/No">
                         No
                     </a>
@@ -54,20 +89,25 @@
             }
             @if (Model.AppleWatchModel == "Apple Watch Series 3")
             {
-                <h5>Color:</h5>
+                <h5 style="font-size:20px; text-align:center;"><b>Color</b></h5>
                 <nav>
                     <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/Space Gray/@currentCelluar">
+                        <img style="height:25px;" src="~/images/space-gray.jpg" alt="space-gray-img" />
                         Space Gray
                     </a>
+                    <br><br>
                     <a href="/AppleWatch/Details/@currentModel/@currentScreenSize/Silver/@currentCelluar">
+                        <img style="height:25px;" src="~/images/silver.jpg" alt="silver-img" />
                         Silver
                     </a>
                 </nav>
-                <h5>Screen size:</h5>
+                <br>
+                <h5 style="font-size:20px; text-align:center;"><b>Screen size</b></h5>
                 <nav>
                     <a href="/AppleWatch/Details/@currentModel/38/@currentColor/@currentCelluar">
                         38 mm
                     </a>
+                    <br><br>
                     <a href="/AppleWatch/Details/@currentModel/42/@currentColor/@currentCelluar">
                         42 mm
                     </a>
@@ -77,29 +117,6 @@
             <h1>
                 $ @Model.Price
             </h1>
-
-            @if (Model.AmountOfProduct <= 0)
-            {
-                <h3 style="color:#fe5d00">
-                    Not Available
-                </h3>
-            }
-            else
-            {
-                <br>
-                <span style="color:blue; font-size:17px;">Available to purchase: <b>@Model.AmountOfProduct</b></span>
-                <form action="/AppleWatch/AddToCart/@Model.Id/@amount" method="post">
-                    <div class="form-group">
-                        <label class="control-label">Amount</label>
-                        <input asp-for="@amount" class="form-control" min="1" max="@Model.AmountOfProduct"/>
-                    </div>
-                    <br>
-                    <br>
-                    <h3>
-                        <button type="submit" style="color:#18c7c7">ADD TO CART</button>
-                    </h3>
-                </form>
-            }
         </div>
 
         <div>

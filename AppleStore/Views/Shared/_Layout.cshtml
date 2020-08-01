@@ -3,11 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AppleStore</title>
+    <title>@ViewData["Title"] -RSAppleStore</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Arimo&display=swap" rel="stylesheet">
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -26,18 +28,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand" style="font-size:23px; padding-right: 45px">
-                    <b>Apple Store</b>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand" style="font-size:23px; 
+                padding-right: 45px; color: #8a9896; font-family: 'Permanent Marker', cursive;">
+                    <b>RS Apple Store</b>
                 </a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" style="font-size: 17px">
-                    <li><a asp-area="" asp-controller="IPhone" asp-action="Index">iPhone</a></li>
-                    <li><a asp-area="" asp-controller="IPad" asp-action="Index">iPad</a></li>
-                    <li><a asp-area="" asp-controller="Mac" asp-action="Index">Mac</a></li>
-                    <li><a asp-area="" asp-controller="AppleWatch" asp-action="Index">Apple Watch</a></li>
-                    <li><a asp-area="" asp-controller="AirPods" asp-action="Models">AirPods</a></li>
-                    <li style="margin-left: 400px; font-size:19px"><a asp-area="" asp-controller="Product" asp-action="Index"><b>CART</b></a></li>
+                <ul class="nav navbar-nav" style="font-size: 17px;">
+                    <li><a asp-area="" asp-controller="IPhone" asp-action="Index" style="color:#00b1d2; font-family: 'Prompt', sans-serif; ">iPhone</a></li>
+                    <li><a asp-area="" asp-controller="IPad" asp-action="Index" style="color:#00b1d2; font-family: 'Prompt', sans-serif;">iPad</a></li>
+                    <li><a asp-area="" asp-controller="Mac" asp-action="Index" style="color:#00b1d2; font-family: 'Prompt', sans-serif;">Mac</a></li>
+                    <li><a asp-area="" asp-controller="AppleWatch" asp-action="Index" style="color:#00b1d2; font-family: 'Prompt', sans-serif;">Apple Watch</a></li>
+                    <li><a asp-area="" asp-controller="AirPods" asp-action="Models" style="color:#00b1d2; font-family: 'Prompt', sans-serif;">AirPods</a></li>
+                    <li style="margin-left: 380px; font-size:19px;">
+                        <a asp-area="" asp-controller="Product" asp-action="Index" style="color:aqua; font-family: 'Prompt', sans-serif;">
+                            <b>CART</b>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -45,11 +52,12 @@
 
     <partial name="_CookieConsentPartial" />
 
-    <div class="my-container body-content">
+    <div class="my-container body-content" style="overflow: hidden; display: flex; flex-direction: column; min-height: 100vh;
+          font-family: 'Arimo', sans-serif; ">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; 2020 - AppleStore</p>
+        <footer style="margin-top: auto;">
+            <p>&copy; 2020 - RS AppleStore</p>
         </footer>
     </div>
 

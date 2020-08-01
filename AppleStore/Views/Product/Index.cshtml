@@ -10,7 +10,7 @@
 <br>
 @if (Model.Count() == 0)
 {
-    <h3> Cart is empty</h3>
+    <h1 style="text-align:center; margin-top: 200px;"> Cart is empty</h1>
 }
 else
 {
@@ -90,9 +90,12 @@ else
     <h2 style="text-align:end;">
         Total: $@total
     </h2>
-    <br>
-    <h2 style="text-align:center;">
-        <a href="/Purchase/Create">BUY</a>
-    </h2>
-
+    <br><br><br>
+    <div style="text-align: center;">
+        <a href="/Purchase/Create">
+            <button class="btn btn-default" style=" height:60px; width:200px; color:#18c7c7; background-color: #222222; font-size: 22px">
+                BUY
+            </button>
+        </a>
+    </div>
 }

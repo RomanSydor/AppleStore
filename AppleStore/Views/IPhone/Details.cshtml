@@ -11,38 +11,74 @@
 
 <br>
 <h4>
-    <a href="/IPhone/Models/@Model.IPhoneModel"> << @Model.IPhoneModel</a>
+    <a href="/IPhone/Models/@Model.IPhoneModel"> < @Model.IPhoneModel</a>
 </h4>
 
 <div style="display: flex; justify-content: space-between;">
-    <img style="margin-bottom: 100px;" src="~/images/@Model.IPhoneModel-@Model.Color-details .webp" alt="@Model.IPhoneModel-@Model.Color-img" />
+    <div style="text-align: center;">
+        <img style="height: 500px;" src="~/images/@Model.IPhoneModel-@Model.Color-details .webp" alt="@Model.IPhoneModel-@Model.Color-img" />
+        @if (Model.AmountOfProduct <= 0)
+        {
+            <h3 style="color:#fe5d00; text-align: center;">
+                Not Available
+            </h3>
+        }
+        else
+        {
+            @*<span style="color:blue; font-size:17px;">Available to purchase: <b>@Model.AmountOfProduct</b></span>*@
+            <form style="padding-top:20px" action="/IPhone/AddToCart/@Model.Id/@amount" method="post">
+                <div>
+                    <label style="font-size:20px; text-align:center;">Amount</label>
+                    <br>
+                    <input style="margin-left: 160px;" asp-for="@amount" class="col-lg-3" min="1" max="@Model.AmountOfProduct" />
+                </div>
+                <h3>
+                    <button type="submit" style="color:#18c7c7; background-color: #222222;
+                    margin-top: 25px; margin-left: 10px; height:50px; width: 150px;" class="btn btn-default">
+                        ADD TO CART
+                    </button>
+                </h3>
+            </form>
+        }
+    </div>
     <div>
         @if (Model.IPhoneModel == "Apple iPhone 11 Pro Max" || Model.IPhoneModel == "Apple iPhone 11 Pro")
         {
-            <br><br><br><br><br>
-            <h5>Color:</h5>
-            <nav>
+            <br><br><br>
+            <h5 style="font-size:20px; text-align:center;"><b>Color</b></h5>
+            <nav style="font-size:17px">
                 <a href="/IPhone/Details/@currentModel/Space Gray/@currentMemory">
+                    <img style="height:25px;" src="~/images/space-gray.jpg" alt="space-gray-img" />
                     Space Gray
                 </a>
+                <br><br>
                 <a href="/IPhone/Details/@currentModel/Silver/@currentMemory">
+                    <img style="height:25px;" src="~/images/silver.jpg" alt="silver-img" />
                     Silver
                 </a>
+                <br><br>
                 <a href="/IPhone/Details/@currentModel/Midnight Green/@currentMemory">
+                    <img style="height:25px;" src="~/images/midnigth-green.jpg" alt="midnight-green-img" />
                     Midnight Green
                 </a>
+                <br><br>
                 <a href="/IPhone/Details/@currentModel/Gold/@currentMemory">
+                    <img style="height:25px;" src="~/images/gold.jpg" alt="gold-img" />
                     Gold
                 </a>
+
             </nav>
-            <h5>Memory:</h5>
-            <nav>
+            <br>
+            <h5 style="font-size:20px; text-align:center;"><b>Memory</b></h5>
+            <nav style="font-size:17px">
                 <a href="/IPhone/Details/@currentModel/@currentColor/64 Gb">
                     64 Gb
                 </a>
+                <br><br>
                 <a href="/IPhone/Details/@currentModel/@currentColor/256 Gb">
                     256 Gb
                 </a>
+                <br><br>
                 <a href="/IPhone/Details/@currentModel/@currentColor/512 Gb">
                     512 Gb
                 </a>
@@ -51,72 +87,66 @@
 
         else if (Model.IPhoneModel == "Apple iPhone 11")
         {
-            <br><br><br><br><br>
-            <h5>Color:</h5>
-            <nav>
-                <a href="/IPhone/Details/@currentModel/Black/@currentMemory">
-                    Black
-                </a>
-                <a href="/IPhone/Details/@currentModel/White/@currentMemory">
-                    White
-                </a>
-                <a href="/IPhone/Details/@currentModel/Red/@currentMemory">
-                    Red
-                </a>
-                <a href="/IPhone/Details/@currentModel/Green/@currentMemory">
-                    Green
-                </a>
-                <a href="/IPhone/Details/@currentModel/Yellow/@currentMemory">
-                    Yellow
-                </a>
-                <a href="/IPhone/Details/@currentModel/Purple/@currentMemory">
-                    Purple
-                </a>
-            </nav>
-            <h5>Memory:</h5>
-            <nav>
+            <br><br>
+            <h5 style="font-size:20px; text-align:center;"><b>Color</b></h5>
+            <div style="justify-content:space-between; display: flex;">
+                <nav style="font-size:17px">
+                    <a href="/IPhone/Details/@currentModel/Black/@currentMemory">
+                        <img style="height:25px;" src="~/images/black.jpg" alt="black-img" />
+                        Black
+                    </a>
+                    <br><br>
+                    <a href="/IPhone/Details/@currentModel/White/@currentMemory">
+                        <img style="height:25px;" src="~/images/white.jpg" alt="white-img" />
+                        White
+                    </a>
+                    <br><br>
+                    <a href="/IPhone/Details/@currentModel/Red/@currentMemory">
+                        <img style="height:25px;" src="~/images/red.jpg" alt="red-img" />
+                        Red
+                    </a>
+                    <br><br>
+                </nav>
+                <nav style="font-size:17px; margin-left:15px;">
+                    <a href="/IPhone/Details/@currentModel/Green/@currentMemory">
+                        <img style="height:25px;" src="~/images/green.jpg" alt="green-img" />
+                        Green
+                    </a>
+                    <br><br>
+                    <a href="/IPhone/Details/@currentModel/Yellow/@currentMemory">
+                        <img style="height:25px;" src="~/images/yellow.jpg" alt="yellow-img" />
+                        Yellow
+                    </a>
+                    <br><br>
+                    <a href="/IPhone/Details/@currentModel/Purple/@currentMemory">
+                        <img style="height:25px;" src="~/images/purple.jpg" alt="purple-img" />
+                        Purple
+                    </a>
+                </nav>
+            </div>
+            <br>
+            <h5 style="font-size:20px; text-align:center;"><b>Memory</b></h5>
+            <nav style="font-size:17px">
                 <a href="/IPhone/Details/@currentModel/@currentColor/64 Gb">
                     64 Gb
                 </a>
+                <br><br>
                 <a href="/IPhone/Details/@currentModel/@currentColor/128 Gb">
                     128 Gb
                 </a>
+                <br><br>
                 <a href="/IPhone/Details/@currentModel/@currentColor/256 Gb">
                     256 Gb
                 </a>
             </nav>
         }
-        <br>
-        <br>
-        <h1>
-            $ @Model.Price
+        <br><br>
+        <h1 style="text-align:center;">
+            <b>$</b> @Model.Price
         </h1>
-        <br>
-        <br>
-        @if (Model.AmountOfProduct <= 0)
-        {
-            <h3 style="color:#fe5d00">
-                Not Available
-            </h3>
-        }
-        else
-        {
-            <span style="color:blue; font-size:17px;">Available to purchase: <b>@Model.AmountOfProduct</b></span>
-            <form style="padding-top:20px" action="/IPhone/AddToCart/@Model.Id/@amount" method="post">
-                <div class="form-group">
-                    <label class="control-label">Amount</label>
-                    <input asp-for="@amount" class="form-control" min="1" max="@Model.AmountOfProduct" />
-                </div>
-                <br>
-                <br>
-                <h3>
-                    <button type="submit" style="color:#18c7c7">ADD TO CART</button>
-                </h3>
-            </form>
-        }
     </div>
 
-    <div style="padding-top: 50px;">
+    <div style="padding-top: 50px; font-size: 16px;">
         <dl class="dl-horizontal">
             <dt>
                 Model:
@@ -201,23 +231,17 @@
             <dd>
                 @Html.DisplayFor(model => model.FrontCamera) MP
             </dd>
-            <br />
-            <dt>
-                Description:
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
+            @*<br />
+                <dt>
+                    Description:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>*@
         </dl>
     </div>
 </div>
 
- @*<script src="Scripts/jquery-3.4.1.min.js"></script>
- <script src="Scripts/bootstrap.min.js"></script>
- <script type="text/javascript">
-     $(document).ready(function () {
-        $('#AddToCartBtn').click(function () {
-            @amount = $('#amountTxt').val();
-        });
-    });
-</script>*@
+<div style="text-align: center;">
+
+</div>

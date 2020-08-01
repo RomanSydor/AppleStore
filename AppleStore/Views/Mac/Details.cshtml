@@ -13,7 +13,7 @@
 }
 <br>
 <h4>
-    <a href="/Mac/Models/@Model.Type"> << @Model.Type</a>
+    <a href="/Mac/Models/@Model.Type"> < @Model.Type</a>
 </h4>
 
 <div style="display: flex; justify-content: space-between;">
@@ -44,16 +44,17 @@
     else
     {
         <br>
-        <span style="color:blue; font-size:17px;">Available to purchase: <b>@Model.AmountOfProduct</b></span>
         <form action="/Mac/AddToCart/@Model.Id/@amount" method="post">
             <div class="form-group">
                 <label class="control-label">Amount</label>
                 <input asp-for="@amount" class="form-control" min="1" max="@Model.AmountOfProduct"/>
             </div>
             <br>
-            <br>
             <h3>
-                <button type="submit" style="color:#18c7c7">ADD TO CART</button>
+                <button type="submit" style="color:#18c7c7; background-color: #222222;
+                    height:50px; width: 150px;" class="btn btn-default">
+                    ADD TO CART
+                </button>
             </h3>
         </form>
     }
@@ -130,13 +131,13 @@
             <dd>
                 @Html.DisplayFor(model => model.YearOfProduction)
             </dd>
-            <br>
+            @*<br>
             <dt>
                 Description:
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.Description)
-            </dd>
+            </dd>*@
         </dl>
     </div>
 </div>
