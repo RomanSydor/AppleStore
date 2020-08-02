@@ -20,9 +20,18 @@ namespace AppleStore.Services
             {
                 _purchase = new Purchase();
             }
+
+            float tp = 0;
+
+            foreach (var item in _cart.CartList)
+            {
+                tp += item.TotalPrice; 
+            }
+
             _purchase.Date = DateTime.Now;
             var list = JsonConvert.SerializeObject(_cart.CartList);
             _purchase.BoughtProds = list;
+            _purchase.TotalPrice = tp;
 
             _cart.CartList.Clear();
 
