@@ -15,5 +15,6 @@ namespace AppleStore.Models
         public DbSet<AppleWatch> AppleWatches { get; set; }
         public DbSet<AirPods> AirPodses  { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
+        public DbSet<Discount> Discounts { get; set; }
     }
 }

@@ -14,6 +14,11 @@ namespace AppleStore.Services
             _cart = cart;
         }
 
+        public void ClearList()
+        {
+            _cart.CartList.Clear();
+        }
+
         public Purchase Create()
         {
             if (_purchase == null) 
@@ -33,9 +38,9 @@ namespace AppleStore.Services
             _purchase.BoughtProds = list;
             _purchase.TotalPrice = tp;
 
-            _cart.CartList.Clear();
-
             return _purchase;
         }
+
+
     }
 }

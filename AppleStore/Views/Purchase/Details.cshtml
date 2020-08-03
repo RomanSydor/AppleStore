@@ -1,0 +1,70 @@
+﻿@model AppleStore.Models.Purchase
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4>Purchase</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BoughtProds)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BoughtProds)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="Purchase" asp-action="AfterPurchase"
+       style="margin-left: 110px; height:50px; width: 150px;">
+        <button class="btn btn-default" style=" height:50px; width:150px; color:#18c7c7; background-color: #222222;
+                            font-size: 22px">
+            BUY
+        </button>
+    </a>
+    <a href="/Purchase/Delete/@Model.Id" style="margin-left: 110px; height:50px; width: 150px;">
+        <button class="btn btn-default" style=" height:50px; width:150px; color:red; background-color: #222222;
+                            font-size: 22px">
+            BACK
+        </button>
+    </a>
+</div>

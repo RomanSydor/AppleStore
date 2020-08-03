@@ -7,6 +7,7 @@ namespace AppleStore.Controllers.V1
 {
     public class PurchaseController : Controller
     {
+
         private IPurchaseRepository _repository;
         private IPurchaseService _service;
 
@@ -33,9 +34,33 @@ namespace AppleStore.Controllers.V1
                 pur.PhoneNumber = purchase.PhoneNumber;
                 pur.Email = purchase.Email;
                 _repository.Create(pur);
-                return RedirectToAction("Index", "Home"); // TODO purchase confirm
+                return RedirectToAction("Details", "Purchase", new Purchase { Id = pur.Id});
             } 
             return View(_service.Create());
+        }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var pur = _repository.Details(id);
+
+            if (pur == null)
+            {
+                return NotFound();
+            }
+            return View(pur);
+        }
+
+        public IActionResult Delete(int id) 
+        {
+            _repository.Delete(id);
+            return RedirectToAction("Create", "Purchase");
+        }
+
+        public IActionResult AfterPurchase() 
+        {
+            _service.ClearList();
+            return View();
         }
     }
 }

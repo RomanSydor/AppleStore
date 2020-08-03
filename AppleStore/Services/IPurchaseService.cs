@@ -5,5 +5,6 @@ namespace AppleStore.Services
     public interface IPurchaseService
     {
         Purchase Create();
+        void ClearList();
     }
 }
