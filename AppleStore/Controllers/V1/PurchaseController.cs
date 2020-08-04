@@ -24,17 +24,18 @@ namespace AppleStore.Controllers.V1
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("Id,FirstName,LastName,PhoneNumber,Email,Date")]Purchase purchase)
+        public ActionResult Create([Bind("Id,FirstName,LastName,PhoneNumber,Email,Date,PromoCode")]Purchase purchase)
         {
             if (ModelState.IsValid)
             {
+                _service.CountPrice(purchase.PromoCode);
                 var pur = _service.Create();
                 pur.FirstName = purchase.FirstName;
                 pur.LastName = purchase.LastName;
                 pur.PhoneNumber = purchase.PhoneNumber;
                 pur.Email = purchase.Email;
                 _repository.Create(pur);
-                return RedirectToAction("Details", "Purchase", new Purchase { Id = pur.Id});
+                return RedirectToAction("Details", "Purchase", new Purchase { Id = pur.Id });
             } 
             return View(_service.Create());
         }

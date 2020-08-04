@@ -8,48 +8,65 @@
 <div>
     <h4>Purchase</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="font-size: 20px;">
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+            First name:
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.FirstName)<br />
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.LastName)
+            Last name:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.LastName)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            Phone number:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.PhoneNumber)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            E-mail:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Date)
+            Date:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Date)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalPrice)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TotalPrice)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BoughtProds)
+        @*<dt>
+            Products list:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.BoughtProds)
+        </dd>*@
+        @if (Model.PromoCode != null)
+        {
+            <dt>
+                Discount:
+            </dt>
+            <dd>
+                @if (Model.PromoValue == "%")
+                {
+                    @Model.PromoAmount @Model.PromoValue
+                }
+                @if (Model.PromoValue == "$")
+                {
+                    @Model.PromoValue @Model.PromoAmount
+                }
+            </dd>
+
+        }
+        <dt>
+            Total price:
+        </dt>
+        <dd>
+            $ @Html.DisplayFor(model => model.TotalPrice)
         </dd>
     </dl>
 </div>

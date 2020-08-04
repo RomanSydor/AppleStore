@@ -8,35 +8,33 @@ namespace AppleStore.Models
     public class Purchase
     {
         [Key]
-        [JsonProperty]
         public int Id { get; set; }
     
-        [JsonProperty]
         [Required(ErrorMessage = "Field can't be empty.")]
         [Display(Name = "First name")]
         public string FirstName { get; set; }
     
-        [JsonProperty]
         [Required(ErrorMessage = "Field can't be empty.")]
         [Display(Name = "Last name")]
         public string LastName { get; set; }
      
-        [JsonProperty]
         [Required(ErrorMessage = "Field can't be empty.")]
         [Display(Name = "Phone")]
         [Phone]
         public string PhoneNumber { get; set; }
      
-        [JsonProperty]
         [Required(ErrorMessage = "Field can't be empty.")]
         [Display(Name = "E-mail")]
         [EmailAddress]
         public string Email { get; set; }
-       
-        [JsonProperty]
+      
+        [Display(Name = "Promo code")]
+        public string PromoCode { get; set; } = null;
+        public float PromoAmount { get; set; }
+        public string PromoValue { get; set; }
+
         public DateTime Date { get; set; }
        
-        [JsonProperty]
         public float TotalPrice { get; set; }
       
         [JsonProperty]

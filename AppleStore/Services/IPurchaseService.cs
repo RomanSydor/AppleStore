@@ -6,5 +6,6 @@ namespace AppleStore.Services
     {
         Purchase Create();
         void ClearList();
+        void CountPrice(string promo);
     }
 }
